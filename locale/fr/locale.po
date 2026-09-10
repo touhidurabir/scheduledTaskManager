@@ -1,0 +1,312 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-08T00:00:00+00:00\n"
+"PO-Revision-Date: 2026-09-09T00:00:00+00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.scheduledTaskManager.displayName"
+msgstr "Gestionnaire des tâches planifiées"
+
+msgid "plugins.generic.scheduledTaskManager.description"
+msgstr "Permet à l'administrateur ou l'administratrice du site de voir toutes les tâches planifiées, leur dernière exécution et leur prochaine échéance, d'en exécuter une à la demande et de consulter leurs journaux d'exécution, sans accès shell au serveur."
+
+msgid "plugins.generic.scheduledTaskManager.pageTitle"
+msgstr "Tâches planifiées"
+
+msgid "plugins.generic.scheduledTaskManager.admin.description"
+msgstr "Consultez les tâches exécutées par le planificateur, vérifiez quand chacune a été exécutée pour la dernière fois et quand elle arrive à échéance, exécutez une tâche à la demande et téléchargez ses journaux d'exécution."
+
+msgid "plugins.generic.scheduledTaskManager.admin.view"
+msgstr "Voir les tâches planifiées"
+
+msgid "plugins.generic.scheduledTaskManager.table.label"
+msgstr "Tâches planifiées enregistrées"
+
+msgid "plugins.generic.scheduledTaskManager.table.description"
+msgstr "{$count} tâches sont enregistrées auprès du planificateur."
+
+msgid "plugins.generic.scheduledTaskManager.table.empty"
+msgstr "Aucune tâche planifiée n'est enregistrée."
+
+msgid "plugins.generic.scheduledTaskManager.column.task"
+msgstr "Tâche"
+
+msgid "plugins.generic.scheduledTaskManager.column.interval"
+msgstr "Intervalle"
+
+msgid "plugins.generic.scheduledTaskManager.column.lastRun"
+msgstr "Dernière exécution"
+
+msgid "plugins.generic.scheduledTaskManager.column.due"
+msgstr "Échéance"
+
+msgid "plugins.generic.scheduledTaskManager.column.actions"
+msgstr "Actions"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinute"
+msgstr "Chaque minute"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinutes"
+msgstr "Toutes les {$count} minutes"
+
+msgid "plugins.generic.scheduledTaskManager.interval.hourly"
+msgstr "Toutes les heures"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyHours"
+msgstr "Toutes les {$count} heures"
+
+msgid "plugins.generic.scheduledTaskManager.interval.daily"
+msgstr "Tous les jours"
+
+msgid "plugins.generic.scheduledTaskManager.interval.weekly"
+msgstr "Toutes les semaines"
+
+msgid "plugins.generic.scheduledTaskManager.interval.monthly"
+msgstr "Tous les mois"
+
+msgid "plugins.generic.scheduledTaskManager.interval.quarterly"
+msgstr "Tous les trimestres"
+
+msgid "plugins.generic.scheduledTaskManager.interval.yearly"
+msgstr "Tous les ans"
+
+msgid "plugins.generic.scheduledTaskManager.interval.custom"
+msgstr "Personnalisé"
+
+msgid "plugins.generic.scheduledTaskManager.relative.future"
+msgstr "dans {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.relative.past"
+msgstr "il y a {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.never"
+msgstr "Aucun enregistrement"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
+msgstr "Enregistré par ce plugin au moment de l'exécution de la tâche."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
+msgstr "Provient du journal d'exécution le plus récent de la tâche, car l'exécution a eu lieu avant l'activation de ce plugin."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
+msgstr "Échec"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.badge"
+msgstr "En retard"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.description"
+msgstr "Cette tâche n'a pas été exécutée depuis sa dernière échéance planifiée. Vérifiez que le planificateur fonctionne : soit une entrée crontab, soit l'exécuteur de tâches web."
+
+msgid "plugins.generic.scheduledTaskManager.overdue.expected"
+msgstr "Aurait dû s'exécuter avant le {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.label"
+msgstr "Point de contrôle de l'exécuteur de tâches : {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.description"
+msgstr "L'occurrence pour laquelle l'exécuteur de tâches web considère cette tâche comme traitée. Lors du premier repérage d'une tâche, cette valeur est initialisée à une limite de planification : à elle seule, elle ne signifie donc pas que la tâche a été exécutée."
+
+msgid "plugins.generic.scheduledTaskManager.action.run"
+msgstr "Exécuter"
+
+msgid "plugins.generic.scheduledTaskManager.action.logs"
+msgstr "Journaux"
+
+msgid "plugins.generic.scheduledTaskManager.action.refresh"
+msgstr "Actualiser"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.filtered"
+msgstr "Cette tâche est désactivée par la configuration actuelle et ne sera pas exécutée. Modifiez d'abord la configuration."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.running"
+msgstr "Cette tâche est déjà en cours d'exécution. Attendez qu'elle se termine avant de la relancer."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.unnamed"
+msgstr "Cette tâche a été enregistrée sans nom : elle ne peut pas être identifiée de façon assez fiable pour être exécutée à la demande."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.filtered"
+msgstr "Désactivée"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.running"
+msgstr "En cours"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.unnamed"
+msgstr "Sans nom"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.title"
+msgstr "Exécuter {$task} maintenant ?"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.message"
+msgstr "Les tâches planifiées ne s'exécutent normalement pas à la main. N'exécutez celle-ci que si vous avez des raisons de penser qu'elle a manqué son exécution planifiée, ou si vous diagnostiquez un problème."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.warning"
+msgstr "La tâche s'exécute immédiatement et cette page attend qu'elle se termine. Les tâches qui téléchargent ou importent de grandes quantités de données peuvent dépasser la limite de temps du serveur et être interrompues en cours de route."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.action"
+msgstr "Exécuter maintenant"
+
+msgid "plugins.generic.scheduledTaskManager.run.completed"
+msgstr "La tâche s'est exécutée et signale une réussite."
+
+msgid "plugins.generic.scheduledTaskManager.run.failed"
+msgstr "La tâche s'est exécutée mais signale un échec. Consultez son journal d'exécution pour en savoir plus."
+
+msgid "plugins.generic.scheduledTaskManager.run.error"
+msgstr "La tâche s'est arrêtée sur une erreur : {$message}"
+
+msgid "plugins.generic.scheduledTaskManager.run.notFound"
+msgstr "Cette tâche n'est pas enregistrée auprès du planificateur."
+
+msgid "plugins.generic.scheduledTaskManager.run.missingTask"
+msgstr "Aucune tâche n'a été indiquée."
+
+msgid "plugins.generic.scheduledTaskManager.logs.title"
+msgstr "Journaux d'exécution"
+
+msgid "plugins.generic.scheduledTaskManager.logs.empty"
+msgstr "Cette tâche n'a écrit aucun journal d'exécution."
+
+msgid "plugins.generic.scheduledTaskManager.logs.range"
+msgstr "Affichage de {$from} à {$to} sur {$total} fichiers journaux."
+
+msgid "plugins.generic.scheduledTaskManager.logs.directory"
+msgstr "Répertoire des journaux : {$directory}"
+
+msgid "plugins.generic.scheduledTaskManager.logs.download"
+msgstr "Télécharger"
+
+msgid "plugins.generic.scheduledTaskManager.logs.perPage"
+msgstr "Journaux par page"
+
+msgid "plugins.generic.scheduledTaskManager.logs.previous"
+msgstr "Précédent"
+
+msgid "plugins.generic.scheduledTaskManager.logs.next"
+msgstr "Suivant"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.file"
+msgstr "Fichier"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.started"
+msgstr "Démarrée"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.duration"
+msgstr "Durée"
+
+msgid "plugins.generic.scheduledTaskManager.logs.startedUnknown"
+msgstr "Horodatage du fichier ; le journal ne contient pas d'entrée de démarrage."
+
+msgid "plugins.generic.scheduledTaskManager.logs.entries"
+msgstr "{$count} entrées"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.from"
+msgstr "Du"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.to"
+msgstr "Au"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.minDuration"
+msgstr "Secondes min."
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.maxDuration"
+msgstr "Secondes max."
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.apply"
+msgstr "Appliquer"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.clear"
+msgstr "Réinitialiser"
+
+msgid "plugins.generic.scheduledTaskManager.logs.truncated"
+msgstr "Seuls les {$count} journaux correspondants les plus récents ont été examinés ; le décompte et le tri par durée portent sur ceux-ci. Restreignez la plage de dates pour un résultat exact."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.label"
+msgstr "Nettoyage"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.days"
+msgstr "Plus anciens que {$count} jours"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.all"
+msgstr "Tous les journaux de cette tâche"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.action"
+msgstr "Supprimer"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.title"
+msgstr "Supprimer les journaux de {$task} ?"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.message"
+msgstr "Cette action supprime définitivement les journaux d'exécution de cette tâche datant de plus de {$count} jours. Les journaux des autres tâches ne sont pas touchés."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.messageAll"
+msgstr "Cette action supprime définitivement les {$total} journaux d'exécution de cette tâche. Les journaux des autres tâches ne sont pas touchés."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.warning"
+msgstr "Cette action est irréversible. Lorsqu'une tâche n'a aucune exécution enregistrée par ce plugin, ses journaux sont la seule trace de sa dernière exécution : elle pourra donc n'afficher aucune dernière exécution jusqu'à la prochaine."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.action"
+msgstr "Supprimer les journaux"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.done"
+msgstr "{$count} journaux supprimés."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.none"
+msgstr "Aucun journal ne correspondait."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.partial"
+msgstr "{$count} journaux supprimés ; {$failed} n'ont pas pu être supprimés. Vérifiez les permissions du répertoire des journaux."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.error"
+msgstr "Les journaux n'ont pas pu être supprimés."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner"
+msgstr "Exécuteur de tâches web"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.on"
+msgstr "Activé"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.off"
+msgstr "Désactivé"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailable"
+msgstr "Non disponible"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.onDetail"
+msgstr "Les tâches sont exécutées à la fin d'une requête web, au plus une fois toutes les {$interval} secondes."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.offDetail"
+msgstr "Désactivé par task_runner dans la section [schedule] de config.inc.php. Les tâches ne s'exécutent que si cron est configuré."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailableDetail"
+msgstr "Cette version n'a pas d'exécuteur de tâches web. Les tâches s'exécutent uniquement via cron."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.lastSeen"
+msgstr "Dernière tâche exécutée de cette façon : {$time}."
+
+msgid "plugins.generic.scheduledTaskManager.status.tasks"
+msgstr "Tâches enregistrées"
+
+msgid "plugins.generic.scheduledTaskManager.status.timezoneValue"
+msgstr "Heures affichées en {$timezone}, d'après {$key}."
+
+msgid "plugins.generic.scheduledTaskManager.status.logFiles"
+msgstr "Fichiers journaux"
+
+msgid "plugins.generic.scheduledTaskManager.status.logDirectoryNone"
+msgstr "Aucun pour l'instant"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
+msgstr "Il est recommandé d’exécuter le planificateur depuis cron"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
+msgstr "Les tâches planifiées sont actuellement exécutées par l’exécuteur de tâches web, à la fin des requêtes web. Cette approche est déconseillée en dehors des petits sites : le travail retombe sur le chargement de page des personnes qui visitent le site, et rien ne s’exécute en l’absence de visites. Une entrée crontab exécutée chaque minute est l’alternative recommandée :"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
+msgstr "N’utilisez pas les deux. En ajoutant l’entrée crontab, mettez task_runner = Off dans la section [schedule] de config.inc.php, sans quoi une même tâche peut être lancée deux fois dans sa propre fenêtre."

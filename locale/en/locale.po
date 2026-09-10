@@ -1,0 +1,312 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-08T00:00:00+00:00\n"
+"PO-Revision-Date: 2026-09-09T00:00:00+00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.scheduledTaskManager.displayName"
+msgstr "Scheduled Task Manager"
+
+msgid "plugins.generic.scheduledTaskManager.description"
+msgstr "Lets a site administrator see every scheduled task, when it last ran and when it is next due, run one on demand, and read its execution logs — without shell access to the server."
+
+msgid "plugins.generic.scheduledTaskManager.pageTitle"
+msgstr "Scheduled Tasks"
+
+msgid "plugins.generic.scheduledTaskManager.admin.description"
+msgstr "Review the tasks the scheduler runs, check when each one last ran and when it is next due, run a task on demand and download its execution logs."
+
+msgid "plugins.generic.scheduledTaskManager.admin.view"
+msgstr "View Scheduled Tasks"
+
+msgid "plugins.generic.scheduledTaskManager.table.label"
+msgstr "Registered scheduled tasks"
+
+msgid "plugins.generic.scheduledTaskManager.table.description"
+msgstr "{$count} tasks are registered with the scheduler."
+
+msgid "plugins.generic.scheduledTaskManager.table.empty"
+msgstr "No scheduled tasks are registered."
+
+msgid "plugins.generic.scheduledTaskManager.column.task"
+msgstr "Task"
+
+msgid "plugins.generic.scheduledTaskManager.column.interval"
+msgstr "Interval"
+
+msgid "plugins.generic.scheduledTaskManager.column.lastRun"
+msgstr "Last Run"
+
+msgid "plugins.generic.scheduledTaskManager.column.due"
+msgstr "Due"
+
+msgid "plugins.generic.scheduledTaskManager.column.actions"
+msgstr "Actions"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinute"
+msgstr "Every minute"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinutes"
+msgstr "Every {$count} minutes"
+
+msgid "plugins.generic.scheduledTaskManager.interval.hourly"
+msgstr "Hourly"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyHours"
+msgstr "Every {$count} hours"
+
+msgid "plugins.generic.scheduledTaskManager.interval.daily"
+msgstr "Daily"
+
+msgid "plugins.generic.scheduledTaskManager.interval.weekly"
+msgstr "Weekly"
+
+msgid "plugins.generic.scheduledTaskManager.interval.monthly"
+msgstr "Monthly"
+
+msgid "plugins.generic.scheduledTaskManager.interval.quarterly"
+msgstr "Quarterly"
+
+msgid "plugins.generic.scheduledTaskManager.interval.yearly"
+msgstr "Yearly"
+
+msgid "plugins.generic.scheduledTaskManager.interval.custom"
+msgstr "Custom"
+
+msgid "plugins.generic.scheduledTaskManager.relative.future"
+msgstr "in {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.relative.past"
+msgstr "{$time} ago"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.never"
+msgstr "No record"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
+msgstr "Recorded by this plugin when the task ran."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
+msgstr "Taken from the task's most recent execution log file, because the run happened before this plugin was enabled."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
+msgstr "Failed"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.badge"
+msgstr "Overdue"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.description"
+msgstr "This task has not run since its last scheduled time. Check that the scheduler is running: either a crontab entry or the web task runner."
+
+msgid "plugins.generic.scheduledTaskManager.overdue.expected"
+msgstr "Should have run by {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.label"
+msgstr "Task runner checkpoint: {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.description"
+msgstr "The occurrence the web task runner considers this task covered for. On a task's first sighting this is seeded to a schedule boundary, so it does not by itself mean the task ran."
+
+msgid "plugins.generic.scheduledTaskManager.action.run"
+msgstr "Run"
+
+msgid "plugins.generic.scheduledTaskManager.action.logs"
+msgstr "Logs"
+
+msgid "plugins.generic.scheduledTaskManager.action.refresh"
+msgstr "Refresh"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.filtered"
+msgstr "This task is switched off by the current configuration and will not run. Change the configuration first."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.running"
+msgstr "This task is already running. Wait for it to finish before starting it again."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.unnamed"
+msgstr "This task was registered without a name, so it cannot be identified reliably enough to run on demand."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.filtered"
+msgstr "Switched off"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.running"
+msgstr "Running"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.unnamed"
+msgstr "Unnamed"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.title"
+msgstr "Run {$task} now?"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.message"
+msgstr "Scheduled tasks are not normally run by hand. Run this one only if you have a reason to believe it missed its scheduled run, or you are diagnosing a problem."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.warning"
+msgstr "The task runs immediately and this page will wait for it. Tasks that download or import large amounts of data may exceed the server's time limit and be cut off part way through."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.action"
+msgstr "Run now"
+
+msgid "plugins.generic.scheduledTaskManager.run.completed"
+msgstr "The task ran and reported success."
+
+msgid "plugins.generic.scheduledTaskManager.run.failed"
+msgstr "The task ran but reported a failure. Check its execution log for details."
+
+msgid "plugins.generic.scheduledTaskManager.run.error"
+msgstr "The task stopped with an error: {$message}"
+
+msgid "plugins.generic.scheduledTaskManager.run.notFound"
+msgstr "That task is not registered with the scheduler."
+
+msgid "plugins.generic.scheduledTaskManager.run.missingTask"
+msgstr "No task was named."
+
+msgid "plugins.generic.scheduledTaskManager.logs.title"
+msgstr "Execution logs"
+
+msgid "plugins.generic.scheduledTaskManager.logs.empty"
+msgstr "This task has not written any execution logs."
+
+msgid "plugins.generic.scheduledTaskManager.logs.range"
+msgstr "Showing {$from}–{$to} of {$total} log files."
+
+msgid "plugins.generic.scheduledTaskManager.logs.directory"
+msgstr "Log directory: {$directory}"
+
+msgid "plugins.generic.scheduledTaskManager.logs.download"
+msgstr "Download"
+
+msgid "plugins.generic.scheduledTaskManager.logs.perPage"
+msgstr "Logs per page"
+
+msgid "plugins.generic.scheduledTaskManager.logs.previous"
+msgstr "Previous"
+
+msgid "plugins.generic.scheduledTaskManager.logs.next"
+msgstr "Next"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.file"
+msgstr "File"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.started"
+msgstr "Started"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.duration"
+msgstr "Duration"
+
+msgid "plugins.generic.scheduledTaskManager.logs.startedUnknown"
+msgstr "File timestamp; the log has no start entry."
+
+msgid "plugins.generic.scheduledTaskManager.logs.entries"
+msgstr "{$count} entries"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.from"
+msgstr "From"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.to"
+msgstr "To"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.minDuration"
+msgstr "Min seconds"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.maxDuration"
+msgstr "Max seconds"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.apply"
+msgstr "Apply"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.clear"
+msgstr "Clear"
+
+msgid "plugins.generic.scheduledTaskManager.logs.truncated"
+msgstr "Only the {$count} most recent matching log files were examined, so counts and ordering by duration cover those. Narrow the date range for an exact answer."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.label"
+msgstr "Clean up"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.days"
+msgstr "Older than {$count} days"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.all"
+msgstr "All log files for this task"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.action"
+msgstr "Delete"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.title"
+msgstr "Delete log files for {$task}?"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.message"
+msgstr "This permanently deletes this task’s execution log files older than {$count} days. Log files for other tasks are not touched."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.messageAll"
+msgstr "This permanently deletes all {$total} execution log files for this task. Log files for other tasks are not touched."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.warning"
+msgstr "It cannot be undone. Where a task has no run recorded by this plugin, its log files are the only record of when it last ran, so it may show no last run afterwards until it next runs."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.action"
+msgstr "Delete log files"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.done"
+msgstr "Deleted {$count} log files."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.none"
+msgstr "No log files matched."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.partial"
+msgstr "Deleted {$count} log files; {$failed} could not be removed. Check the permissions on the log directory."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.error"
+msgstr "The log files could not be deleted."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner"
+msgstr "Web task runner"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.on"
+msgstr "On"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.off"
+msgstr "Off"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailable"
+msgstr "Not available"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.onDetail"
+msgstr "Tasks are run at the end of a web request, at most once every {$interval} seconds."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.offDetail"
+msgstr "Switched off by task_runner in the [schedule] section of config.inc.php. Tasks run only if cron is configured."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailableDetail"
+msgstr "This version has no web based task runner. Tasks run from cron only."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.lastSeen"
+msgstr "Last task run this way: {$time}."
+
+msgid "plugins.generic.scheduledTaskManager.status.tasks"
+msgstr "Registered tasks"
+
+msgid "plugins.generic.scheduledTaskManager.status.timezoneValue"
+msgstr "Times shown in {$timezone}, from {$key}."
+
+msgid "plugins.generic.scheduledTaskManager.status.logFiles"
+msgstr "Log files"
+
+msgid "plugins.generic.scheduledTaskManager.status.logDirectoryNone"
+msgstr "None yet"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
+msgstr "Running the scheduler from cron is recommended"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
+msgstr "Scheduled tasks are currently run by the web task runner, at the end of web requests. That is discouraged for anything but small sites: the work lands on visitors’ page loads, and nothing runs while nobody is visiting. A crontab entry that runs every minute is the recommended alternative:"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
+msgstr "Do not run both. When you add the crontab entry, set task_runner = Off in the [schedule] section of config.inc.php — otherwise the same task can be started twice within its own window."

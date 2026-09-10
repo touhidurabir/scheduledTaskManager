@@ -1,0 +1,312 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-08T00:00:00+00:00\n"
+"PO-Revision-Date: 2026-09-09T00:00:00+00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.scheduledTaskManager.displayName"
+msgstr "Управление на планираните задачи"
+
+msgid "plugins.generic.scheduledTaskManager.description"
+msgstr "Позволява на администратора на сайта да види всички планирани задачи, кога са изпълнени за последно и кога предстоят, да пусне задача при поискване и да прегледа дневниците за изпълнение — без достъп до сървъра през шел."
+
+msgid "plugins.generic.scheduledTaskManager.pageTitle"
+msgstr "Планирани задачи"
+
+msgid "plugins.generic.scheduledTaskManager.admin.description"
+msgstr "Прегледайте задачите, които планировчикът изпълнява, проверете кога всяка от тях е изпълнена за последно и кога предстои, пуснете задача при поискване и изтеглете дневниците ѝ за изпълнение."
+
+msgid "plugins.generic.scheduledTaskManager.admin.view"
+msgstr "Преглед на планираните задачи"
+
+msgid "plugins.generic.scheduledTaskManager.table.label"
+msgstr "Регистрирани планирани задачи"
+
+msgid "plugins.generic.scheduledTaskManager.table.description"
+msgstr "В планировчика са регистрирани {$count} задачи."
+
+msgid "plugins.generic.scheduledTaskManager.table.empty"
+msgstr "Няма регистрирани планирани задачи."
+
+msgid "plugins.generic.scheduledTaskManager.column.task"
+msgstr "Задача"
+
+msgid "plugins.generic.scheduledTaskManager.column.interval"
+msgstr "Интервал"
+
+msgid "plugins.generic.scheduledTaskManager.column.lastRun"
+msgstr "Последно изпълнение"
+
+msgid "plugins.generic.scheduledTaskManager.column.due"
+msgstr "Предстоящо изпълнение"
+
+msgid "plugins.generic.scheduledTaskManager.column.actions"
+msgstr "Действия"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinute"
+msgstr "Всяка минута"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinutes"
+msgstr "На всеки {$count} минути"
+
+msgid "plugins.generic.scheduledTaskManager.interval.hourly"
+msgstr "На всеки час"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyHours"
+msgstr "На всеки {$count} часа"
+
+msgid "plugins.generic.scheduledTaskManager.interval.daily"
+msgstr "Ежедневно"
+
+msgid "plugins.generic.scheduledTaskManager.interval.weekly"
+msgstr "Ежеседмично"
+
+msgid "plugins.generic.scheduledTaskManager.interval.monthly"
+msgstr "Ежемесечно"
+
+msgid "plugins.generic.scheduledTaskManager.interval.quarterly"
+msgstr "На всяко тримесечие"
+
+msgid "plugins.generic.scheduledTaskManager.interval.yearly"
+msgstr "Ежегодно"
+
+msgid "plugins.generic.scheduledTaskManager.interval.custom"
+msgstr "Персонализирано"
+
+msgid "plugins.generic.scheduledTaskManager.relative.future"
+msgstr "след {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.relative.past"
+msgstr "преди {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.never"
+msgstr "Няма запис"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
+msgstr "Записано от тази приставка при изпълнението на задачата."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
+msgstr "Взето от най-новия дневник на задачата, защото изпълнението е станало, преди приставката да бъде включена."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
+msgstr "Неуспешно"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.badge"
+msgstr "Просрочена"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.description"
+msgstr "Тази задача не е изпълнявана от последния си планиран момент. Проверете дали планировчикът работи: или запис в crontab, или уеб базираният изпълнител на задачи."
+
+msgid "plugins.generic.scheduledTaskManager.overdue.expected"
+msgstr "Трябваше да се изпълни до {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.label"
+msgstr "Контролна точка на изпълнителя на задачи: {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.description"
+msgstr "Моментът, за който уеб изпълнителят на задачи смята тази задача за покрита. При първото ѝ засичане тук се записва граница от разписанието, така че сама по себе си стойността не означава, че задачата е изпълнена."
+
+msgid "plugins.generic.scheduledTaskManager.action.run"
+msgstr "Изпълни"
+
+msgid "plugins.generic.scheduledTaskManager.action.logs"
+msgstr "Дневници"
+
+msgid "plugins.generic.scheduledTaskManager.action.refresh"
+msgstr "Обнови"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.filtered"
+msgstr "Тази задача е изключена от текущата конфигурация и няма да се изпълни. Първо променете конфигурацията."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.running"
+msgstr "Тази задача вече се изпълнява. Изчакайте да приключи, преди да я стартирате отново."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.unnamed"
+msgstr "Тази задача е регистрирана без име и не може да бъде разпозната достатъчно надеждно, за да бъде изпълнена при поискване."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.filtered"
+msgstr "Изключена"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.running"
+msgstr "Изпълнява се"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.unnamed"
+msgstr "Без име"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.title"
+msgstr "Да се изпълни ли {$task} сега?"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.message"
+msgstr "Планираните задачи обикновено не се пускат ръчно. Изпълнете тази само ако имате основание да смятате, че е пропуснала планираното си изпълнение, или ако търсите причина за проблем."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.warning"
+msgstr "Задачата се изпълнява веднага и тази страница ще я изчака. Задачи, които изтеглят или внасят големи количества данни, може да надхвърлят ограничението за време на сървъра и да бъдат прекъснати по средата."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.action"
+msgstr "Изпълни сега"
+
+msgid "plugins.generic.scheduledTaskManager.run.completed"
+msgstr "Задачата беше изпълнена и докладва успех."
+
+msgid "plugins.generic.scheduledTaskManager.run.failed"
+msgstr "Задачата беше изпълнена, но докладва неуспех. Вижте дневника ѝ за изпълнение за подробности."
+
+msgid "plugins.generic.scheduledTaskManager.run.error"
+msgstr "Задачата спря с грешка: {$message}"
+
+msgid "plugins.generic.scheduledTaskManager.run.notFound"
+msgstr "Тази задача не е регистрирана в планировчика."
+
+msgid "plugins.generic.scheduledTaskManager.run.missingTask"
+msgstr "Не беше посочена задача."
+
+msgid "plugins.generic.scheduledTaskManager.logs.title"
+msgstr "Дневници за изпълнение"
+
+msgid "plugins.generic.scheduledTaskManager.logs.empty"
+msgstr "Тази задача не е записала дневници за изпълнение."
+
+msgid "plugins.generic.scheduledTaskManager.logs.range"
+msgstr "Показани са {$from}–{$to} от {$total} файла с дневници."
+
+msgid "plugins.generic.scheduledTaskManager.logs.directory"
+msgstr "Директория с дневници: {$directory}"
+
+msgid "plugins.generic.scheduledTaskManager.logs.download"
+msgstr "Изтегляне"
+
+msgid "plugins.generic.scheduledTaskManager.logs.perPage"
+msgstr "Дневници на страница"
+
+msgid "plugins.generic.scheduledTaskManager.logs.previous"
+msgstr "Назад"
+
+msgid "plugins.generic.scheduledTaskManager.logs.next"
+msgstr "Напред"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.file"
+msgstr "Файл"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.started"
+msgstr "Начало"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.duration"
+msgstr "Времетраене"
+
+msgid "plugins.generic.scheduledTaskManager.logs.startedUnknown"
+msgstr "Времеви отпечатък на файла; дневникът няма начален запис."
+
+msgid "plugins.generic.scheduledTaskManager.logs.entries"
+msgstr "{$count} записа"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.from"
+msgstr "От"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.to"
+msgstr "До"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.minDuration"
+msgstr "Мин. секунди"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.maxDuration"
+msgstr "Макс. секунди"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.apply"
+msgstr "Прилагане"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.clear"
+msgstr "Изчистване"
+
+msgid "plugins.generic.scheduledTaskManager.logs.truncated"
+msgstr "Прегледани са само {$count} най-нови съответстващи дневника; броят и подредбата по времетраене се отнасят за тях. Стеснете периода за точен отговор."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.label"
+msgstr "Изчистване"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.days"
+msgstr "По-стари от {$count} дни"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.all"
+msgstr "Всички дневници на тази задача"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.action"
+msgstr "Изтриване"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.title"
+msgstr "Да се изтрият ли дневниците на {$task}?"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.message"
+msgstr "Това изтрива окончателно дневниците за изпълнение на тази задача, по-стари от {$count} дни. Дневниците на другите задачи не се засягат."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.messageAll"
+msgstr "Това изтрива окончателно всичките {$total} дневника за изпълнение на тази задача. Дневниците на другите задачи не се засягат."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.warning"
+msgstr "Действието е необратимо. Когато за дадена задача няма изпълнение, записано от тази добавка, нейните дневници са единственото свидетелство за последното ѝ изпълнение, така че до следващото изпълнение тя може да не показва последно изпълнение."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.action"
+msgstr "Изтриване на дневниците"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.done"
+msgstr "Изтрити са {$count} дневника."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.none"
+msgstr "Няма съответстващи дневници."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.partial"
+msgstr "Изтрити са {$count} дневника; {$failed} не можаха да бъдат премахнати. Проверете правата на директорията с дневници."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.error"
+msgstr "Дневниците не можаха да бъдат изтрити."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner"
+msgstr "Уеб изпълнител на задачи"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.on"
+msgstr "Включен"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.off"
+msgstr "Изключен"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailable"
+msgstr "Не е наличен"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.onDetail"
+msgstr "Задачите се изпълняват в края на уеб заявка, най-много веднъж на всеки {$interval} секунди."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.offDetail"
+msgstr "Изключен чрез task_runner в раздела [schedule] на config.inc.php. Задачите се изпълняват само ако е настроен cron."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailableDetail"
+msgstr "Тази версия няма уеб изпълнител на задачи. Задачите се изпълняват само чрез cron."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.lastSeen"
+msgstr "Последна задача, изпълнена по този начин: {$time}."
+
+msgid "plugins.generic.scheduledTaskManager.status.tasks"
+msgstr "Регистрирани задачи"
+
+msgid "plugins.generic.scheduledTaskManager.status.timezoneValue"
+msgstr "Часовете са показани в {$timezone}, според {$key}."
+
+msgid "plugins.generic.scheduledTaskManager.status.logFiles"
+msgstr "Файлове с дневници"
+
+msgid "plugins.generic.scheduledTaskManager.status.logDirectoryNone"
+msgstr "Все още няма"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
+msgstr "Препоръчва се планировчикът да се изпълнява чрез cron"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
+msgstr "В момента планираните задачи се изпълняват от уеб изпълнителя на задачи, в края на уеб заявките. Това не се препоръчва за нищо друго освен малки сайтове: работата пада върху зареждането на страници на посетителите, а когато няма посещения, не се изпълнява нищо. Препоръчителната алтернатива е запис в crontab, който се изпълнява всяка минута:"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
+msgstr "Не използвайте и двете. Когато добавите записа в crontab, задайте task_runner = Off в раздела [schedule] на config.inc.php — в противен случай една и съща задача може да бъде стартирана два пъти в собствения си прозорец."

@@ -1,0 +1,312 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-08T00:00:00+00:00\n"
+"PO-Revision-Date: 2026-09-09T00:00:00+00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.scheduledTaskManager.displayName"
+msgstr "Verwaltung geplanter Aufgaben"
+
+msgid "plugins.generic.scheduledTaskManager.description"
+msgstr "Ermöglicht Website-Administrator/innen, alle geplanten Aufgaben einzusehen – wann sie zuletzt ausgeführt wurden und wann sie das nächste Mal fällig sind –, eine Aufgabe bei Bedarf auszuführen und ihre Ausführungsprotokolle zu lesen, ganz ohne Shell-Zugang zum Server."
+
+msgid "plugins.generic.scheduledTaskManager.pageTitle"
+msgstr "Geplante Aufgaben"
+
+msgid "plugins.generic.scheduledTaskManager.admin.description"
+msgstr "Sehen Sie sich die Aufgaben an, die der Scheduler ausführt, prüfen Sie, wann jede zuletzt ausgeführt wurde und wann sie das nächste Mal fällig ist, führen Sie eine Aufgabe bei Bedarf aus und laden Sie ihre Ausführungsprotokolle herunter."
+
+msgid "plugins.generic.scheduledTaskManager.admin.view"
+msgstr "Geplante Aufgaben anzeigen"
+
+msgid "plugins.generic.scheduledTaskManager.table.label"
+msgstr "Registrierte geplante Aufgaben"
+
+msgid "plugins.generic.scheduledTaskManager.table.description"
+msgstr "{$count} Aufgaben sind im Scheduler registriert."
+
+msgid "plugins.generic.scheduledTaskManager.table.empty"
+msgstr "Es sind keine geplanten Aufgaben registriert."
+
+msgid "plugins.generic.scheduledTaskManager.column.task"
+msgstr "Aufgabe"
+
+msgid "plugins.generic.scheduledTaskManager.column.interval"
+msgstr "Intervall"
+
+msgid "plugins.generic.scheduledTaskManager.column.lastRun"
+msgstr "Zuletzt ausgeführt"
+
+msgid "plugins.generic.scheduledTaskManager.column.due"
+msgstr "Fällig"
+
+msgid "plugins.generic.scheduledTaskManager.column.actions"
+msgstr "Aktionen"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinute"
+msgstr "Jede Minute"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinutes"
+msgstr "Alle {$count} Minuten"
+
+msgid "plugins.generic.scheduledTaskManager.interval.hourly"
+msgstr "Stündlich"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyHours"
+msgstr "Alle {$count} Stunden"
+
+msgid "plugins.generic.scheduledTaskManager.interval.daily"
+msgstr "Täglich"
+
+msgid "plugins.generic.scheduledTaskManager.interval.weekly"
+msgstr "Wöchentlich"
+
+msgid "plugins.generic.scheduledTaskManager.interval.monthly"
+msgstr "Monatlich"
+
+msgid "plugins.generic.scheduledTaskManager.interval.quarterly"
+msgstr "Vierteljährlich"
+
+msgid "plugins.generic.scheduledTaskManager.interval.yearly"
+msgstr "Jährlich"
+
+msgid "plugins.generic.scheduledTaskManager.interval.custom"
+msgstr "Benutzerdefiniert"
+
+msgid "plugins.generic.scheduledTaskManager.relative.future"
+msgstr "in {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.relative.past"
+msgstr "vor {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.never"
+msgstr "Kein Eintrag"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
+msgstr "Von diesem Plugin aufgezeichnet, als die Aufgabe ausgeführt wurde."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
+msgstr "Der neuesten Protokolldatei der Aufgabe entnommen, weil die Ausführung stattfand, bevor dieses Plugin aktiviert wurde."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
+msgstr "Fehlgeschlagen"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.badge"
+msgstr "Überfällig"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.description"
+msgstr "Diese Aufgabe wurde seit ihrem letzten geplanten Zeitpunkt nicht ausgeführt. Prüfen Sie, ob der Scheduler läuft: entweder ein Crontab-Eintrag oder der webbasierte Task-Runner."
+
+msgid "plugins.generic.scheduledTaskManager.overdue.expected"
+msgstr "Hätte bis {$date} laufen sollen"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.label"
+msgstr "Prüfpunkt des Task-Runners: {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.description"
+msgstr "Der Zeitpunkt, für den der webbasierte Task-Runner diese Aufgabe als erledigt betrachtet. Wird eine Aufgabe zum ersten Mal erfasst, trägt er hier eine Zeitplangrenze ein; der Wert allein bedeutet also nicht, dass die Aufgabe ausgeführt wurde."
+
+msgid "plugins.generic.scheduledTaskManager.action.run"
+msgstr "Ausführen"
+
+msgid "plugins.generic.scheduledTaskManager.action.logs"
+msgstr "Protokolle"
+
+msgid "plugins.generic.scheduledTaskManager.action.refresh"
+msgstr "Aktualisieren"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.filtered"
+msgstr "Diese Aufgabe ist durch die aktuelle Konfiguration abgeschaltet und wird nicht ausgeführt. Ändern Sie zuerst die Konfiguration."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.running"
+msgstr "Diese Aufgabe läuft bereits. Warten Sie, bis sie beendet ist, bevor Sie sie erneut starten."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.unnamed"
+msgstr "Diese Aufgabe wurde ohne Namen registriert und lässt sich daher nicht zuverlässig genug identifizieren, um bei Bedarf ausgeführt zu werden."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.filtered"
+msgstr "Abgeschaltet"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.running"
+msgstr "Läuft"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.unnamed"
+msgstr "Ohne Namen"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.title"
+msgstr "{$task} jetzt ausführen?"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.message"
+msgstr "Geplante Aufgaben werden normalerweise nicht von Hand ausgeführt. Führen Sie diese nur aus, wenn Sie Grund zu der Annahme haben, dass sie ihren geplanten Lauf verpasst hat, oder wenn Sie einem Problem nachgehen."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.warning"
+msgstr "Die Aufgabe wird sofort ausgeführt und diese Seite wartet darauf. Aufgaben, die große Datenmengen herunterladen oder importieren, können das Zeitlimit des Servers überschreiten und mittendrin abgebrochen werden."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.action"
+msgstr "Jetzt ausführen"
+
+msgid "plugins.generic.scheduledTaskManager.run.completed"
+msgstr "Die Aufgabe wurde ausgeführt und meldet Erfolg."
+
+msgid "plugins.generic.scheduledTaskManager.run.failed"
+msgstr "Die Aufgabe wurde ausgeführt, meldet aber einen Fehler. Einzelheiten stehen im Ausführungsprotokoll."
+
+msgid "plugins.generic.scheduledTaskManager.run.error"
+msgstr "Die Aufgabe wurde mit einem Fehler abgebrochen: {$message}"
+
+msgid "plugins.generic.scheduledTaskManager.run.notFound"
+msgstr "Diese Aufgabe ist nicht im Scheduler registriert."
+
+msgid "plugins.generic.scheduledTaskManager.run.missingTask"
+msgstr "Es wurde keine Aufgabe angegeben."
+
+msgid "plugins.generic.scheduledTaskManager.logs.title"
+msgstr "Ausführungsprotokolle"
+
+msgid "plugins.generic.scheduledTaskManager.logs.empty"
+msgstr "Diese Aufgabe hat keine Ausführungsprotokolle geschrieben."
+
+msgid "plugins.generic.scheduledTaskManager.logs.range"
+msgstr "{$from}–{$to} von {$total} Protokolldateien werden angezeigt."
+
+msgid "plugins.generic.scheduledTaskManager.logs.directory"
+msgstr "Protokollverzeichnis: {$directory}"
+
+msgid "plugins.generic.scheduledTaskManager.logs.download"
+msgstr "Herunterladen"
+
+msgid "plugins.generic.scheduledTaskManager.logs.perPage"
+msgstr "Protokolle pro Seite"
+
+msgid "plugins.generic.scheduledTaskManager.logs.previous"
+msgstr "Zurück"
+
+msgid "plugins.generic.scheduledTaskManager.logs.next"
+msgstr "Weiter"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.file"
+msgstr "Datei"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.started"
+msgstr "Gestartet"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.duration"
+msgstr "Dauer"
+
+msgid "plugins.generic.scheduledTaskManager.logs.startedUnknown"
+msgstr "Zeitstempel der Datei; das Protokoll enthält keinen Starteintrag."
+
+msgid "plugins.generic.scheduledTaskManager.logs.entries"
+msgstr "{$count} Einträge"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.from"
+msgstr "Von"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.to"
+msgstr "Bis"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.minDuration"
+msgstr "Min. Sekunden"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.maxDuration"
+msgstr "Max. Sekunden"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.apply"
+msgstr "Anwenden"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.clear"
+msgstr "Zurücksetzen"
+
+msgid "plugins.generic.scheduledTaskManager.logs.truncated"
+msgstr "Es wurden nur die {$count} neuesten passenden Protokolldateien untersucht; Anzahl und Sortierung nach Dauer beziehen sich auf diese. Grenzen Sie den Zeitraum ein, um ein genaues Ergebnis zu erhalten."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.label"
+msgstr "Aufräumen"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.days"
+msgstr "Älter als {$count} Tage"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.all"
+msgstr "Alle Protokolldateien dieser Aufgabe"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.action"
+msgstr "Löschen"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.title"
+msgstr "Protokolldateien für {$task} löschen?"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.message"
+msgstr "Dies löscht dauerhaft die Ausführungsprotokolle dieser Aufgabe, die älter als {$count} Tage sind. Protokolle anderer Aufgaben bleiben unberührt."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.messageAll"
+msgstr "Dies löscht dauerhaft alle {$total} Ausführungsprotokolle dieser Aufgabe. Protokolle anderer Aufgaben bleiben unberührt."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.warning"
+msgstr "Dies kann nicht rückgängig gemacht werden. Wenn für eine Aufgabe kein von diesem Plugin aufgezeichneter Lauf vorliegt, sind ihre Protokolldateien der einzige Nachweis des letzten Laufs; danach wird möglicherweise kein letzter Lauf mehr angezeigt, bis die Aufgabe erneut läuft."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.action"
+msgstr "Protokolldateien löschen"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.done"
+msgstr "{$count} Protokolldateien gelöscht."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.none"
+msgstr "Keine Protokolldateien entsprachen der Auswahl."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.partial"
+msgstr "{$count} Protokolldateien gelöscht; {$failed} konnten nicht entfernt werden. Prüfen Sie die Berechtigungen des Protokollverzeichnisses."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.error"
+msgstr "Die Protokolldateien konnten nicht gelöscht werden."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner"
+msgstr "Webbasierter Task-Runner"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.on"
+msgstr "Ein"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.off"
+msgstr "Aus"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailable"
+msgstr "Nicht verfügbar"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.onDetail"
+msgstr "Aufgaben werden am Ende eines Web-Requests ausgeführt, höchstens alle {$interval} Sekunden."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.offDetail"
+msgstr "Durch task_runner im Abschnitt [schedule] der config.inc.php abgeschaltet. Aufgaben werden nur ausgeführt, wenn Cron eingerichtet ist."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailableDetail"
+msgstr "Diese Version hat keinen webbasierten Task-Runner. Aufgaben werden ausschließlich über Cron ausgeführt."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.lastSeen"
+msgstr "Zuletzt auf diesem Weg ausgeführt: {$time}."
+
+msgid "plugins.generic.scheduledTaskManager.status.tasks"
+msgstr "Registrierte Aufgaben"
+
+msgid "plugins.generic.scheduledTaskManager.status.timezoneValue"
+msgstr "Zeiten in {$timezone}, aus {$key}."
+
+msgid "plugins.generic.scheduledTaskManager.status.logFiles"
+msgstr "Protokolldateien"
+
+msgid "plugins.generic.scheduledTaskManager.status.logDirectoryNone"
+msgstr "Noch keine"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
+msgstr "Empfohlen wird, den Scheduler über Cron auszuführen"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
+msgstr "Geplante Aufgaben werden derzeit vom webbasierten Task-Runner am Ende von Web-Requests ausgeführt. Davon wird für alles außer kleinen Websites abgeraten: Die Arbeit fällt beim Seitenaufruf von Besucher/innen an, und ohne Besuche läuft gar nichts. Empfohlen wird stattdessen ein Crontab-Eintrag, der jede Minute ausgeführt wird:"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
+msgstr "Führen Sie nicht beides aus. Setzen Sie beim Anlegen des Crontab-Eintrags task_runner = Off im Abschnitt [schedule] der config.inc.php – sonst kann dieselbe Aufgabe innerhalb ihres Zeitfensters zweimal gestartet werden."
