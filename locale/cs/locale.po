@@ -1,0 +1,312 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-08T00:00:00+00:00\n"
+"PO-Revision-Date: 2026-09-09T00:00:00+00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.scheduledTaskManager.displayName"
+msgstr "Správce plánovaných úloh"
+
+msgid "plugins.generic.scheduledTaskManager.description"
+msgstr "Umožňuje správci webu zobrazit všechny plánované úlohy, kdy naposledy proběhly a kdy jsou příště na řadě, spustit úlohu na vyžádání a číst protokoly o jejich provedení – bez přístupu k serveru přes shell."
+
+msgid "plugins.generic.scheduledTaskManager.pageTitle"
+msgstr "Plánované úlohy"
+
+msgid "plugins.generic.scheduledTaskManager.admin.description"
+msgstr "Prohlédněte si úlohy, které plánovač spouští, zjistěte, kdy každá naposledy proběhla a kdy je příště na řadě, spusťte úlohu na vyžádání a stáhněte si protokoly o jejím provedení."
+
+msgid "plugins.generic.scheduledTaskManager.admin.view"
+msgstr "Zobrazit plánované úlohy"
+
+msgid "plugins.generic.scheduledTaskManager.table.label"
+msgstr "Registrované plánované úlohy"
+
+msgid "plugins.generic.scheduledTaskManager.table.description"
+msgstr "V plánovači je registrováno {$count} úloh."
+
+msgid "plugins.generic.scheduledTaskManager.table.empty"
+msgstr "Není registrována žádná plánovaná úloha."
+
+msgid "plugins.generic.scheduledTaskManager.column.task"
+msgstr "Úloha"
+
+msgid "plugins.generic.scheduledTaskManager.column.interval"
+msgstr "Interval"
+
+msgid "plugins.generic.scheduledTaskManager.column.lastRun"
+msgstr "Poslední spuštění"
+
+msgid "plugins.generic.scheduledTaskManager.column.due"
+msgstr "Příští spuštění"
+
+msgid "plugins.generic.scheduledTaskManager.column.actions"
+msgstr "Akce"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinute"
+msgstr "Každou minutu"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyMinutes"
+msgstr "Každých {$count} minut"
+
+msgid "plugins.generic.scheduledTaskManager.interval.hourly"
+msgstr "Každou hodinu"
+
+msgid "plugins.generic.scheduledTaskManager.interval.everyHours"
+msgstr "Každých {$count} hodin"
+
+msgid "plugins.generic.scheduledTaskManager.interval.daily"
+msgstr "Denně"
+
+msgid "plugins.generic.scheduledTaskManager.interval.weekly"
+msgstr "Týdně"
+
+msgid "plugins.generic.scheduledTaskManager.interval.monthly"
+msgstr "Měsíčně"
+
+msgid "plugins.generic.scheduledTaskManager.interval.quarterly"
+msgstr "Čtvrtletně"
+
+msgid "plugins.generic.scheduledTaskManager.interval.yearly"
+msgstr "Ročně"
+
+msgid "plugins.generic.scheduledTaskManager.interval.custom"
+msgstr "Vlastní"
+
+msgid "plugins.generic.scheduledTaskManager.relative.future"
+msgstr "za {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.relative.past"
+msgstr "před {$time}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.never"
+msgstr "Žádný záznam"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
+msgstr "Zaznamenáno tímto pluginem při spuštění úlohy."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
+msgstr "Převzato z nejnovějšího protokolu úlohy, protože spuštění proběhlo dříve, než byl tento plugin zapnut."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
+msgstr "Selhalo"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.badge"
+msgstr "Po termínu"
+
+msgid "plugins.generic.scheduledTaskManager.overdue.description"
+msgstr "Tato úloha neproběhla od svého posledního plánovaného termínu. Zkontrolujte, zda plánovač běží: buď záznam v crontab, nebo webový spouštěč úloh."
+
+msgid "plugins.generic.scheduledTaskManager.overdue.expected"
+msgstr "Měla proběhnout do {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.label"
+msgstr "Kontrolní bod spouštěče úloh: {$date}"
+
+msgid "plugins.generic.scheduledTaskManager.checkpoint.description"
+msgstr "Termín, pro který webový spouštěč úloh považuje tuto úlohu za vyřízenou. Při prvním zaznamenání úlohy sem uloží hranici plánu, takže samotná hodnota neznamená, že úloha proběhla."
+
+msgid "plugins.generic.scheduledTaskManager.action.run"
+msgstr "Spustit"
+
+msgid "plugins.generic.scheduledTaskManager.action.logs"
+msgstr "Protokoly"
+
+msgid "plugins.generic.scheduledTaskManager.action.refresh"
+msgstr "Obnovit"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.filtered"
+msgstr "Tato úloha je vypnutá současným nastavením a nespustí se. Nejprve změňte konfiguraci."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.running"
+msgstr "Tato úloha už běží. Než ji spustíte znovu, počkejte, až skončí."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.unnamed"
+msgstr "Tato úloha byla registrována bez názvu, a proto ji nelze dostatečně spolehlivě identifikovat pro spuštění na vyžádání."
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.filtered"
+msgstr "Vypnuto"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.running"
+msgstr "Běží"
+
+msgid "plugins.generic.scheduledTaskManager.blocked.badge.unnamed"
+msgstr "Bez názvu"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.title"
+msgstr "Spustit úlohu {$task} nyní?"
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.message"
+msgstr "Plánované úlohy se běžně nespouštějí ručně. Spusťte tuto úlohu jen tehdy, máte-li důvod se domnívat, že vynechala své plánované spuštění, nebo když řešíte problém."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.warning"
+msgstr "Úloha se spustí okamžitě a tato stránka na ni počká. Úlohy, které stahují nebo importují velké množství dat, mohou překročit časový limit serveru a být přerušeny v půli."
+
+msgid "plugins.generic.scheduledTaskManager.run.confirm.action"
+msgstr "Spustit nyní"
+
+msgid "plugins.generic.scheduledTaskManager.run.completed"
+msgstr "Úloha proběhla a hlásí úspěch."
+
+msgid "plugins.generic.scheduledTaskManager.run.failed"
+msgstr "Úloha proběhla, ale hlásí chybu. Podrobnosti najdete v protokolu o provedení."
+
+msgid "plugins.generic.scheduledTaskManager.run.error"
+msgstr "Úloha skončila chybou: {$message}"
+
+msgid "plugins.generic.scheduledTaskManager.run.notFound"
+msgstr "Tato úloha není v plánovači registrována."
+
+msgid "plugins.generic.scheduledTaskManager.run.missingTask"
+msgstr "Nebyla uvedena žádná úloha."
+
+msgid "plugins.generic.scheduledTaskManager.logs.title"
+msgstr "Protokoly o provedení"
+
+msgid "plugins.generic.scheduledTaskManager.logs.empty"
+msgstr "Tato úloha nezapsala žádné protokoly o provedení."
+
+msgid "plugins.generic.scheduledTaskManager.logs.range"
+msgstr "Zobrazeno {$from}–{$to} z {$total} souborů protokolu."
+
+msgid "plugins.generic.scheduledTaskManager.logs.directory"
+msgstr "Adresář protokolů: {$directory}"
+
+msgid "plugins.generic.scheduledTaskManager.logs.download"
+msgstr "Stáhnout"
+
+msgid "plugins.generic.scheduledTaskManager.logs.perPage"
+msgstr "Protokolů na stránku"
+
+msgid "plugins.generic.scheduledTaskManager.logs.previous"
+msgstr "Předchozí"
+
+msgid "plugins.generic.scheduledTaskManager.logs.next"
+msgstr "Další"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.file"
+msgstr "Soubor"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.started"
+msgstr "Zahájeno"
+
+msgid "plugins.generic.scheduledTaskManager.logs.column.duration"
+msgstr "Trvání"
+
+msgid "plugins.generic.scheduledTaskManager.logs.startedUnknown"
+msgstr "Časové razítko souboru; protokol neobsahuje počáteční záznam."
+
+msgid "plugins.generic.scheduledTaskManager.logs.entries"
+msgstr "{$count} záznamů"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.from"
+msgstr "Od"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.to"
+msgstr "Do"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.minDuration"
+msgstr "Min. sekund"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.maxDuration"
+msgstr "Max. sekund"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.apply"
+msgstr "Použít"
+
+msgid "plugins.generic.scheduledTaskManager.logs.filter.clear"
+msgstr "Zrušit"
+
+msgid "plugins.generic.scheduledTaskManager.logs.truncated"
+msgstr "Bylo prozkoumáno pouze {$count} nejnovějších odpovídajících protokolů; počet a řazení podle trvání se vztahují k nim. Pro přesný výsledek zužte rozsah dat."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.label"
+msgstr "Úklid"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.days"
+msgstr "Starší než {$count} dní"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.all"
+msgstr "Všechny protokoly této úlohy"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.action"
+msgstr "Smazat"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.title"
+msgstr "Smazat protokoly úlohy {$task}?"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.message"
+msgstr "Tímto trvale smažete protokoly o provedení této úlohy starší než {$count} dní. Protokolů ostatních úloh se to nedotkne."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.messageAll"
+msgstr "Tímto trvale smažete všech {$total} protokolů o provedení této úlohy. Protokolů ostatních úloh se to nedotkne."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.warning"
+msgstr "Akci nelze vrátit zpět. Pokud u úlohy není žádné spuštění zaznamenané tímto pluginem, jsou její protokoly jediným záznamem o posledním běhu, a proto se u ní až do dalšího spuštění nemusí zobrazit žádný poslední běh."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.confirm.action"
+msgstr "Smazat protokoly"
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.done"
+msgstr "Smazáno {$count} protokolů."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.none"
+msgstr "Žádné protokoly neodpovídaly výběru."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.partial"
+msgstr "Smazáno {$count} protokolů; {$failed} se nepodařilo odstranit. Zkontrolujte oprávnění adresáře s protokoly."
+
+msgid "plugins.generic.scheduledTaskManager.logs.cleanup.error"
+msgstr "Protokoly se nepodařilo smazat."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner"
+msgstr "Webový spouštěč úloh"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.on"
+msgstr "Zapnuto"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.off"
+msgstr "Vypnuto"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailable"
+msgstr "Není k dispozici"
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.onDetail"
+msgstr "Úlohy se spouštějí na konci webového požadavku, nejvýše jednou za {$interval} sekund."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.offDetail"
+msgstr "Vypnuto volbou task_runner v sekci [schedule] souboru config.inc.php. Úlohy poběží jen tehdy, je-li nastaven cron."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.unavailableDetail"
+msgstr "Tato verze nemá webový spouštěč úloh. Úlohy se spouštějí pouze cronem."
+
+msgid "plugins.generic.scheduledTaskManager.status.webRunner.lastSeen"
+msgstr "Naposledy takto spuštěná úloha: {$time}."
+
+msgid "plugins.generic.scheduledTaskManager.status.tasks"
+msgstr "Registrované úlohy"
+
+msgid "plugins.generic.scheduledTaskManager.status.timezoneValue"
+msgstr "Časy jsou uvedeny v {$timezone}, podle {$key}."
+
+msgid "plugins.generic.scheduledTaskManager.status.logFiles"
+msgstr "Soubory protokolu"
+
+msgid "plugins.generic.scheduledTaskManager.status.logDirectoryNone"
+msgstr "Zatím žádné"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
+msgstr "Doporučujeme spouštět plánovač z cronu"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
+msgstr "Plánované úlohy nyní spouští webový spouštěč úloh na konci webových požadavků. To se nedoporučuje pro nic jiného než malé weby: práce padne na načtení stránky návštěvníků a bez návštěv se nespustí vůbec nic. Doporučenou alternativou je záznam v crontabu spouštěný každou minutu:"
+
+msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
+msgstr "Nepoužívejte obojí zároveň. Až záznam do crontabu přidáte, nastavte task_runner = Off v sekci [schedule] souboru config.inc.php – jinak se stejná úloha může ve svém okně spustit dvakrát."
