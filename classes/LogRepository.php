@@ -4,7 +4,7 @@
  * @file classes/LogRepository.php
  *
  * Copyright (c) 2026 Touhidur Rahman
- * Distributed under The MIT License. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class LogRepository
  *
@@ -20,6 +20,7 @@
 namespace APP\plugins\generic\scheduledTaskManager\classes;
 
 use Carbon\Carbon;
+use PKP\config\Config;
 use PKP\file\PrivateFileManager;
 use PKP\scheduledTask\ScheduledTaskHelper;
 use Throwable;
@@ -43,6 +44,9 @@ class LogRepository
      * the start time; entries are only counted when the whole file fits inside this.
      */
     public const MAX_READ = 262144;
+
+    /** How much of a failed run's log is read back for its reason: the end, where it is. */
+    public const RUN_TAIL = 65536;
 
     /** Cached result of the directory-wide scan. */
     private ?array $scan = null;
@@ -144,10 +148,45 @@ class LogRepository
     }
 
     /**
-     * Most recent log timestamp for a task. Stats only that task's newest day, which is the
-     * complete candidate set: a run finishing after midnight is named for the new day anyway.
+     * Most recent log timestamp for a task.
      */
     public function lastRunFor(string $taskName): ?Carbon
+    {
+        $newest = $this->newestFileFor($taskName);
+
+        return $newest ? Carbon::createFromTimestamp($newest['modified']) : null;
+    }
+
+    /**
+     * The newest run in a task's log files: when it finished, and how long it took by the stamp
+     * on its first entry -- one 32-byte read on top of what lastRunFor() costs.
+     *
+     * @return ?array{finished: int, duration: ?int}
+     */
+    public function newestRunFor(string $taskName): ?array
+    {
+        $newest = $this->newestFileFor($taskName);
+
+        if ($newest === null) {
+            return null;
+        }
+
+        $started = $this->startedOf($newest['name']);
+
+        return [
+            'finished' => $newest['modified'],
+            'duration' => $started === null ? null : max(0, $newest['modified'] - $started),
+        ];
+    }
+
+    /**
+     * The task's most recently written log file. Stats only its newest day: the day in a name is
+     * the day that run started, so an older day can only hold a later finish if two runs
+     * overlapped across midnight.
+     *
+     * @return ?array{name: string, modified: int}
+     */
+    private function newestFileFor(string $taskName): ?array
     {
         $names = $this->scan()['byTask'][static::shortNameOf($taskName)]['names'] ?? [];
         $newest = null;
@@ -155,12 +194,12 @@ class LogRepository
         foreach ($names as $name) {
             $modified = @filemtime($this->directory() . '/' . $name);
 
-            if ($modified !== false) {
-                $newest = max($newest ?? 0, $modified);
+            if ($modified !== false && $modified > ($newest['modified'] ?? 0)) {
+                $newest = ['name' => $name, 'modified' => $modified];
             }
         }
 
-        return $newest ? Carbon::createFromTimestamp($newest) : null;
+        return $newest;
     }
 
     /**
@@ -412,6 +451,85 @@ class LogRepository
         }
 
         return ['deleted' => $deleted, 'failed' => $failed];
+    }
+
+    /**
+     * What a task itself wrote during one run, oldest first: the file without the entries
+     * ScheduledTask::execute() wraps every run in -- base_url and the start notice ahead of the
+     * task's own, and the stop notice after them when the task returned rather than threw.
+     *
+     * Those are picked out by position, never by their `[Notice]` label, which is translated at
+     * write time. A file too long to read whole is read from its end, where a failure's reason
+     * is, and then only the stop notice can be placed.
+     *
+     * @return ?array{file: string, entries: array<int, string>, truncated: bool}
+     */
+    public function runEntries(string $name, bool $returned, int $limit): ?array
+    {
+        $path = $this->directory() . '/' . basename($name);
+        $size = @filesize($path);
+
+        if ($size === false) {
+            return null;
+        }
+
+        $whole = $size <= static::RUN_TAIL;
+        $chunk = @file_get_contents($path, false, null, $whole ? 0 : $size - static::RUN_TAIL);
+
+        if ($chunk === false) {
+            return null;
+        }
+
+        if (!$whole) {
+            // Starts mid-line; the first whole entry begins after the next line break.
+            $break = strpos($chunk, "\n");
+            $chunk = $break === false ? '' : substr($chunk, $break + 1);
+        }
+
+        // An entry's message can hold line breaks, so a line without a stamp continues the one
+        // before it.
+        $entries = [];
+        foreach (explode("\n", rtrim($chunk, "\n")) as $line) {
+            if ($entries === [] || static::isEntry($line)) {
+                $entries[] = $line;
+            } else {
+                $entries[count($entries) - 1] .= "\n" . $line;
+            }
+        }
+
+        if ($whole) {
+            $baseUrl = (string) Config::getVar('general', 'base_url');
+
+            // Skipped by core when empty, so it is matched rather than assumed.
+            if ($baseUrl !== '' && isset($entries[0]) && static::textOf($entries[0]) === $baseUrl) {
+                array_shift($entries);
+            }
+
+            array_shift($entries);
+        }
+
+        if ($returned) {
+            array_pop($entries);
+        }
+
+        return [
+            'file' => basename($name),
+            'entries' => array_slice($entries, -$limit),
+            'truncated' => !$whole || count($entries) > $limit,
+        ];
+    }
+
+    /**
+     * An entry without its stamp: `[2026-09-22 04:27:43] [Error] reason` reads `[Error] reason`.
+     */
+    public static function textOf(string $entry): string
+    {
+        return (string) preg_replace('/^\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\] ?/', '', $entry);
+    }
+
+    private static function isEntry(string $line): bool
+    {
+        return (bool) preg_match('/^\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\]/', $line);
     }
 
     /**

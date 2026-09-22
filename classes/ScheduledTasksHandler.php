@@ -4,7 +4,7 @@
  * @file classes/ScheduledTasksHandler.php
  *
  * Copyright (c) 2026 Touhidur Rahman
- * Distributed under The MIT License. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class ScheduledTasksHandler
  *
@@ -78,6 +78,7 @@ class ScheduledTasksHandler extends Handler
                 'apiUrl' => $this->apiUrl($request),
                 'runApiUrl' => $this->apiUrl($request, 'run'),
                 'logsApiUrl' => $this->apiUrl($request, 'logs'),
+                'failureApiUrl' => $this->apiUrl($request, 'failure'),
             ],
         ]);
 

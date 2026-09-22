@@ -93,10 +93,103 @@ msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
 msgstr "Recorded by this plugin when the task ran."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
-msgstr "Taken from the task's most recent execution log file, because the run happened before this plugin was enabled."
+msgstr "Taken from the task's most recent execution log file, which is newer than anything this plugin recorded: a run from before the plugin was enabled, for instance, or one started with scheduler.php test, which reports to nothing. A log file does not say how the run went or what ran it."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
 msgstr "Failed"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranFor"
+msgstr "Ran for {$duration}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.web"
+msgstr "Ran for {$duration} via the web task runner"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.cli"
+msgstr "Ran for {$duration} via CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.manual"
+msgstr "Ran for {$duration} as a manual run"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.web"
+msgstr "Run by the web task runner"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.cli"
+msgstr "Run via CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.manual"
+msgstr "Run manually"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed.showDetails"
+msgstr "Failed: show what went wrong"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web"
+msgstr "web task runner"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web.description"
+msgstr "Run by the web based task runner, at the end of a page request."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli"
+msgstr "CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli.description"
+msgstr "Run from the command line: by cron, or by someone running the scheduler by hand. The two cannot be told apart."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual"
+msgstr "run manually"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual.description"
+msgstr "Run from this page with the Run button."
+
+msgid "plugins.generic.scheduledTaskManager.failure.title"
+msgstr "Last failure"
+
+msgid "plugins.generic.scheduledTaskManager.failure.none"
+msgstr "No detail was kept for this failure. It was recorded before this plugin kept failure details, or the detail could not be saved."
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.when"
+msgstr "When"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.origin"
+msgstr "Source"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.runtime"
+msgstr "Ran for"
+
+msgid "plugins.generic.scheduledTaskManager.failure.exception"
+msgstr "The task stopped with an error it did not handle."
+
+msgid "plugins.generic.scheduledTaskManager.failure.where"
+msgstr "at {$file}:{$line}"
+
+msgid "plugins.generic.scheduledTaskManager.failure.cause"
+msgstr "Caused by"
+
+msgid "plugins.generic.scheduledTaskManager.failure.trace"
+msgstr "Stack trace"
+
+msgid "plugins.generic.scheduledTaskManager.failure.traceTruncated"
+msgstr "The trace was shortened when it was recorded."
+
+msgid "plugins.generic.scheduledTaskManager.failure.reported"
+msgstr "The task reported that it did not complete. It dealt with the problem itself, so there is no stack trace: its own account is what it wrote to its log during the run."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noLog"
+msgstr "No log file from this run was found, so the task's own account of it is not available."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noEntries"
+msgstr "The task wrote nothing to its log during the run to say why."
+
+msgid "plugins.generic.scheduledTaskManager.failure.entries"
+msgstr "Log entries from this run"
+
+msgid "plugins.generic.scheduledTaskManager.failure.entriesTruncated"
+msgstr "Only the most recent entries were kept."
+
+msgid "plugins.generic.scheduledTaskManager.failure.download"
+msgstr "Download the full log file ({$file})"
+
+msgid "plugins.generic.scheduledTaskManager.failure.logGone"
+msgstr "The log file {$file} has since been deleted; anything shown above was copied when the run failed."
 
 msgid "plugins.generic.scheduledTaskManager.overdue.badge"
 msgstr "Overdue"
@@ -306,7 +399,7 @@ msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
 msgstr "Running the scheduler from cron is recommended"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
-msgstr "Scheduled tasks are currently run by the web task runner, at the end of web requests. That is discouraged for anything but small sites: the work lands on visitors’ page loads, and nothing runs while nobody is visiting. A crontab entry that runs every minute is the recommended alternative:"
+msgstr "Scheduled tasks are currently run by the web task runner, at the end of web requests. Use it only where cron cannot be set up: it runs tasks only when someone visits, so on any site, however small, a task can run late or miss its due time, and the work lands on visitors’ page loads. A crontab entry that runs every minute is the recommended alternative:"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
 msgstr "Do not run both. When you add the crontab entry, set task_runner = Off in the [schedule] section of config.inc.php — otherwise the same task can be started twice within its own window."

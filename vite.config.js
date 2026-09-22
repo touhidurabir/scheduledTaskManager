@@ -2,7 +2,7 @@
  * @file vite.config.js
  *
  * Copyright (c) 2026 Touhidur Rahman
- * Distributed under The MIT License. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
 import {resolve} from 'path';

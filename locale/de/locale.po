@@ -93,10 +93,103 @@ msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
 msgstr "Von diesem Plugin aufgezeichnet, als die Aufgabe ausgeführt wurde."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
-msgstr "Der neuesten Protokolldatei der Aufgabe entnommen, weil die Ausführung stattfand, bevor dieses Plugin aktiviert wurde."
+msgstr "Der neuesten Protokolldatei der Aufgabe entnommen, die jünger ist als alles, was dieses Plugin aufgezeichnet hat – etwa eine Ausführung, bevor das Plugin aktiviert wurde, oder eine mit scheduler.php test gestartete, die nirgendwohin gemeldet wird. Eine Protokolldatei sagt weder, wie die Ausführung verlief, noch, wodurch sie gestartet wurde."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
 msgstr "Fehlgeschlagen"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranFor"
+msgstr "Lief {$duration}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.web"
+msgstr "Lief {$duration} über den webbasierten Task-Runner"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.cli"
+msgstr "Lief {$duration} über die CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.manual"
+msgstr "Lief {$duration}, manuell ausgeführt"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.web"
+msgstr "Vom webbasierten Task-Runner ausgeführt"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.cli"
+msgstr "Über die CLI ausgeführt"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.manual"
+msgstr "Manuell ausgeführt"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed.showDetails"
+msgstr "Fehlgeschlagen: Details anzeigen"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web"
+msgstr "webbasierter Task-Runner"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web.description"
+msgstr "Vom webbasierten Task-Runner am Ende einer Seitenanfrage ausgeführt."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli"
+msgstr "CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli.description"
+msgstr "Über die Kommandozeile ausgeführt: per Cron oder von jemandem, der den Scheduler von Hand gestartet hat. Beides lässt sich nicht unterscheiden."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual"
+msgstr "manuell ausgeführt"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual.description"
+msgstr "Auf dieser Seite mit der Schaltfläche „Ausführen“ gestartet."
+
+msgid "plugins.generic.scheduledTaskManager.failure.title"
+msgstr "Letzter Fehlschlag"
+
+msgid "plugins.generic.scheduledTaskManager.failure.none"
+msgstr "Zu diesem Fehlschlag wurden keine Details gespeichert. Er wurde aufgezeichnet, bevor dieses Plugin Fehlerdetails speicherte, oder die Details konnten nicht gespeichert werden."
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.when"
+msgstr "Zeitpunkt"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.origin"
+msgstr "Quelle"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.runtime"
+msgstr "Dauer"
+
+msgid "plugins.generic.scheduledTaskManager.failure.exception"
+msgstr "Die Aufgabe wurde durch einen Fehler abgebrochen, den sie nicht selbst behandelt hat."
+
+msgid "plugins.generic.scheduledTaskManager.failure.where"
+msgstr "in {$file}:{$line}"
+
+msgid "plugins.generic.scheduledTaskManager.failure.cause"
+msgstr "Verursacht durch"
+
+msgid "plugins.generic.scheduledTaskManager.failure.trace"
+msgstr "Stacktrace"
+
+msgid "plugins.generic.scheduledTaskManager.failure.traceTruncated"
+msgstr "Der Stacktrace wurde beim Aufzeichnen gekürzt."
+
+msgid "plugins.generic.scheduledTaskManager.failure.reported"
+msgstr "Die Aufgabe hat gemeldet, dass sie nicht abgeschlossen wurde. Sie hat das Problem selbst behandelt, daher gibt es keinen Stacktrace: Ihre eigene Darstellung ist das, was sie während der Ausführung in ihr Protokoll geschrieben hat."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noLog"
+msgstr "Zu dieser Ausführung wurde keine Protokolldatei gefunden, daher liegt die eigene Darstellung der Aufgabe nicht vor."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noEntries"
+msgstr "Die Aufgabe hat während der Ausführung nichts in ihr Protokoll geschrieben, das den Grund nennt."
+
+msgid "plugins.generic.scheduledTaskManager.failure.entries"
+msgstr "Protokolleinträge dieser Ausführung"
+
+msgid "plugins.generic.scheduledTaskManager.failure.entriesTruncated"
+msgstr "Nur die neuesten Einträge wurden aufbewahrt."
+
+msgid "plugins.generic.scheduledTaskManager.failure.download"
+msgstr "Vollständige Protokolldatei herunterladen ({$file})"
+
+msgid "plugins.generic.scheduledTaskManager.failure.logGone"
+msgstr "Die Protokolldatei {$file} wurde inzwischen gelöscht; alles oben Gezeigte wurde beim Fehlschlag kopiert."
 
 msgid "plugins.generic.scheduledTaskManager.overdue.badge"
 msgstr "Überfällig"
@@ -306,7 +399,7 @@ msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
 msgstr "Empfohlen wird, den Scheduler über Cron auszuführen"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
-msgstr "Geplante Aufgaben werden derzeit vom webbasierten Task-Runner am Ende von Web-Requests ausgeführt. Davon wird für alles außer kleinen Websites abgeraten: Die Arbeit fällt beim Seitenaufruf von Besucher/innen an, und ohne Besuche läuft gar nichts. Empfohlen wird stattdessen ein Crontab-Eintrag, der jede Minute ausgeführt wird:"
+msgstr "Geplante Aufgaben werden derzeit vom webbasierten Task-Runner am Ende von Web-Requests ausgeführt. Nutzen Sie ihn nur, wenn sich kein Cron einrichten lässt: Er führt Aufgaben nur aus, wenn jemand die Website besucht. Auf jeder Website, auch auf einer kleinen, kann eine Aufgabe daher verspätet laufen oder ihren Termin verpassen, und die Arbeit fällt beim Seitenaufruf von Besucher/innen an. Empfohlen wird stattdessen ein Crontab-Eintrag, der jede Minute ausgeführt wird:"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
 msgstr "Führen Sie nicht beides aus. Setzen Sie beim Anlegen des Crontab-Eintrags task_runner = Off im Abschnitt [schedule] der config.inc.php – sonst kann dieselbe Aufgabe innerhalb ihres Zeitfensters zweimal gestartet werden."

@@ -2,11 +2,12 @@
   @file resources/js/Components/StmTaskLogsModal.vue
 
   Copyright (c) 2026 Touhidur Rahman
-  Distributed under The MIT License. For full terms see the file LICENSE.
+  Distributed under the GNU GPL v3. For full terms see the file LICENSE.
 -->
 
 <script setup>
 import {computed, onMounted, ref} from 'vue';
+import {formatDuration} from '../formatDuration.js';
 
 const {useLocalize} = pkp.modules.useLocalize;
 const {useFetch} = pkp.modules.useFetch;
@@ -269,30 +270,6 @@ async function cleanup(days) {
 	await load();
 
 	props.onLogsChanged();
-}
-
-/**
- * Elapsed seconds as a compact figure. Units stay here rather than in the translation files:
- * they are the same in every language this plugin ships.
- */
-function formatDuration(seconds) {
-	if (seconds === null || seconds === undefined) {
-		return '—';
-	}
-
-	if (seconds < 1) {
-		return '<1s';
-	}
-
-	if (seconds < 60) {
-		return `${seconds}s`;
-	}
-
-	if (seconds < 3600) {
-		return `${Math.floor(seconds / 60)}m ${seconds % 60}s`;
-	}
-
-	return `${Math.floor(seconds / 3600)}h ${Math.floor((seconds % 3600) / 60)}m`;
 }
 
 onMounted(load);
