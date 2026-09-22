@@ -93,10 +93,103 @@ msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
 msgstr "Enregistré par ce plugiciel au moment de l'exécution de la tâche."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
-msgstr "Provient du journal d'exécution le plus récent de la tâche, car l'exécution a eu lieu avant l'activation de ce plugiciel."
+msgstr "Provient du journal d'exécution le plus récent de la tâche, plus récent que tout ce que ce plugiciel a enregistré : une exécution antérieure à l'activation du plugiciel, par exemple, ou lancée avec scheduler.php test, qui ne le signale nulle part. Un journal n'indique ni le résultat de l'exécution ni ce qui l'a lancée."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
 msgstr "Échec"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranFor"
+msgstr "Exécutée en {$duration}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.web"
+msgstr "Exécutée en {$duration} par l'exécuteur de tâches web"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.cli"
+msgstr "Exécutée en {$duration} via la CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.manual"
+msgstr "Exécutée manuellement en {$duration}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.web"
+msgstr "Exécutée par l'exécuteur de tâches web"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.cli"
+msgstr "Exécutée via la CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.manual"
+msgstr "Exécutée manuellement"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed.showDetails"
+msgstr "Échec : afficher ce qui s'est passé"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web"
+msgstr "exécuteur de tâches web"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web.description"
+msgstr "Exécutée par l'exécuteur de tâches web, à la fin d'une requête de page."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli"
+msgstr "CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli.description"
+msgstr "Exécutée en ligne de commande : par cron, ou par quelqu'un qui a lancé le planificateur à la main. Les deux ne peuvent pas être distingués."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual"
+msgstr "exécutée manuellement"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual.description"
+msgstr "Lancée depuis cette page avec le bouton « Exécuter »."
+
+msgid "plugins.generic.scheduledTaskManager.failure.title"
+msgstr "Dernier échec"
+
+msgid "plugins.generic.scheduledTaskManager.failure.none"
+msgstr "Aucun détail n'a été conservé pour cet échec. Il a été enregistré avant que ce plugiciel ne conserve les détails des échecs, ou les détails n'ont pas pu être enregistrés."
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.when"
+msgstr "Date"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.origin"
+msgstr "Source"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.runtime"
+msgstr "Durée"
+
+msgid "plugins.generic.scheduledTaskManager.failure.exception"
+msgstr "La tâche s'est arrêtée sur une erreur qu'elle n'a pas gérée."
+
+msgid "plugins.generic.scheduledTaskManager.failure.where"
+msgstr "dans {$file}:{$line}"
+
+msgid "plugins.generic.scheduledTaskManager.failure.cause"
+msgstr "Causée par"
+
+msgid "plugins.generic.scheduledTaskManager.failure.trace"
+msgstr "Trace de la pile"
+
+msgid "plugins.generic.scheduledTaskManager.failure.traceTruncated"
+msgstr "La trace a été raccourcie lors de son enregistrement."
+
+msgid "plugins.generic.scheduledTaskManager.failure.reported"
+msgstr "La tâche a signalé qu'elle ne s'est pas terminée. Elle a géré le problème elle-même, il n'y a donc pas de trace de la pile : son propre compte rendu est ce qu'elle a écrit dans son journal pendant l'exécution."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noLog"
+msgstr "Aucun journal de cette exécution n'a été trouvé; le compte rendu de la tâche n'est donc pas disponible."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noEntries"
+msgstr "Pendant l'exécution, la tâche n'a rien écrit dans son journal pour en expliquer la raison."
+
+msgid "plugins.generic.scheduledTaskManager.failure.entries"
+msgstr "Entrées du journal de cette exécution"
+
+msgid "plugins.generic.scheduledTaskManager.failure.entriesTruncated"
+msgstr "Seules les entrées les plus récentes ont été conservées."
+
+msgid "plugins.generic.scheduledTaskManager.failure.download"
+msgstr "Télécharger le journal complet ({$file})"
+
+msgid "plugins.generic.scheduledTaskManager.failure.logGone"
+msgstr "Le journal {$file} a été supprimé depuis; ce qui est affiché ci-dessus a été copié au moment de l'échec."
 
 msgid "plugins.generic.scheduledTaskManager.overdue.badge"
 msgstr "En retard"
@@ -306,7 +399,7 @@ msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
 msgstr "Il est recommandé d’exécuter le planificateur depuis cron"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
-msgstr "Les tâches planifiées sont actuellement exécutées par l’exécuteur de tâches web, à la fin des requêtes web. Cette approche est déconseillée en dehors des petits sites : le travail retombe sur le chargement de page des personnes qui visitent le site, et rien ne s’exécute en l’absence de visites. Une entrée crontab exécutée chaque minute est l’alternative recommandée :"
+msgstr "Les tâches planifiées sont actuellement exécutées par l’exécuteur de tâches web, à la fin des requêtes web. Ne l’utilisez que si cron ne peut pas être mis en place : il n’exécute les tâches que lorsque quelqu’un visite le site, si bien que sur tout site, même petit, une tâche peut s’exécuter en retard ou manquer son échéance, et le travail retombe sur le chargement de page des personnes qui visitent le site. Une entrée crontab exécutée chaque minute est l’alternative recommandée :"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
 msgstr "N’utilisez pas les deux. En ajoutant l’entrée crontab, mettez task_runner = Off dans la section [schedule] de config.inc.php, sans quoi une même tâche peut être lancée deux fois dans sa propre fenêtre."

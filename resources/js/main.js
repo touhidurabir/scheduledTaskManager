@@ -2,7 +2,7 @@
  * @file resources/js/main.js
  *
  * Copyright (c) 2026 Touhidur Rahman
- * Distributed under The MIT License. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * Entry point for the Scheduled Task Manager bundle.
  *

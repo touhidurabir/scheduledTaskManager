@@ -2,12 +2,15 @@
   @file resources/js/Components/StmScheduledTasksPage.vue
 
   Copyright (c) 2026 Touhidur Rahman
-  Distributed under The MIT License. For full terms see the file LICENSE.
+  Distributed under the GNU GPL v3. For full terms see the file LICENSE.
 -->
 
 <script setup>
 import {computed, onMounted, ref} from 'vue';
 import StmTaskLogsModal from './StmTaskLogsModal.vue';
+import {formatDuration} from '../formatDuration.js';
+import {describeOrigin} from '../describeOrigin.js';
+import StmTaskFailureModal from './StmTaskFailureModal.vue';
 
 const {useLocalize} = pkp.modules.useLocalize;
 const {useFetch} = pkp.modules.useFetch;
@@ -18,6 +21,7 @@ const props = defineProps({
 	apiUrl: {type: String, required: true},
 	runApiUrl: {type: String, required: true},
 	logsApiUrl: {type: String, required: true},
+	failureApiUrl: {type: String, required: true},
 });
 
 const {t} = useLocalize();
@@ -199,6 +203,64 @@ function lastRunTitle(task) {
 }
 
 /**
+ * The line under a last run: how long it ran and what ran it, as one sentence -- each only when
+ * known. A run known only from its log file has a duration read off the log's stamps and no
+ * origin: the log is written the same whatever starts the task.
+ *
+ * Whole sentences per combination rather than fragments joined together, so a translation can
+ * order them as its language needs. Every key is spelled out: see webRunnerCard.
+ */
+function lastRunDetail(task) {
+	const {runtime, origin} = task.lastRun;
+
+	if (runtime === null || runtime === undefined) {
+		return (
+			{
+				web: t('plugins.generic.scheduledTaskManager.lastRun.via.web'),
+				cli: t('plugins.generic.scheduledTaskManager.lastRun.via.cli'),
+				manual: t('plugins.generic.scheduledTaskManager.lastRun.via.manual'),
+			}[origin] ?? null
+		);
+	}
+
+	const duration = formatDuration(runtime);
+
+	return (
+		{
+			web: t('plugins.generic.scheduledTaskManager.lastRun.ranForVia.web', {
+				duration,
+			}),
+			cli: t('plugins.generic.scheduledTaskManager.lastRun.ranForVia.cli', {
+				duration,
+			}),
+			manual: t(
+				'plugins.generic.scheduledTaskManager.lastRun.ranForVia.manual',
+				{
+					duration,
+				},
+			),
+		}[origin] ??
+		t('plugins.generic.scheduledTaskManager.lastRun.ranFor', {duration})
+	);
+}
+
+function hasFailed(task) {
+	return task.lastRun?.status === 'failed';
+}
+
+/**
+ * How a row is shaded. A failure outranks lateness: a task that ran and failed is the more urgent
+ * of the two, and one shade at a time keeps each meaning legible.
+ */
+function rowClasses(task) {
+	return {
+		'stm__row--blocked': !task.canRun,
+		'stm__row--failed': hasFailed(task),
+		'stm__row--overdue': !!task.overdue && !hasFailed(task),
+	};
+}
+
+/**
  * A few words naming why a task cannot be run, for the row itself. The full explanation stays
  * in the title attribute.
  */
@@ -281,6 +343,14 @@ function showLogs(task) {
 		// Deleting logs there changes the count shown here, and may change a last run that was
 		// only ever known from a log file.
 		onLogsChanged: reload,
+	});
+}
+
+function showFailure(task) {
+	openSideModal(StmTaskFailureModal, {
+		taskName: task.name,
+		taskLabel: taskLabel(task),
+		failureApiUrl: props.failureApiUrl,
 	});
 }
 
@@ -371,7 +441,7 @@ onMounted(reload);
 				<PkpTableRow
 					v-for="task in tasks"
 					:key="task.name"
-					:class="{'stm__row--blocked': !task.canRun}"
+					:class="rowClasses(task)"
 				>
 					<PkpTableCell :is-row-header="true">
 						<span class="stm__taskName">
@@ -412,12 +482,38 @@ onMounted(reload);
 
 					<PkpTableCell>
 						<template v-if="task.lastRun">
-							<span class="stm__moment" :title="lastRunTitle(task)">
-								{{ task.lastRun.label }}
+							<span class="stm__when" :title="lastRunTitle(task)">
+								<!-- The space is written out: a bare line break between two elements
+								     is dropped when the template compiles. -->
+								<span class="stm__moment">{{ task.lastRun.label }}</span>
+								{{ ' ' }}
+								<span class="stm__relative">({{ task.lastRun.relative }})</span>
 							</span>
-							<span class="stm__muted">{{ task.lastRun.relative }}</span>
-							<span v-if="task.lastRun.status === 'failed'" class="stm__failed">
-								{{ t('plugins.generic.scheduledTaskManager.lastRun.failed') }}
+							<span
+								v-if="lastRunDetail(task)"
+								class="stm__muted"
+								:title="describeOrigin(t, task.lastRun.origin)?.title"
+							>
+								{{ lastRunDetail(task) }}
+							</span>
+							<span v-if="hasFailed(task)" class="stm__failure">
+								<button
+									type="button"
+									class="stm__badge stm__badge--failed"
+									:title="
+										t(
+											'plugins.generic.scheduledTaskManager.lastRun.failed.showDetails',
+										)
+									"
+									:aria-label="
+										t(
+											'plugins.generic.scheduledTaskManager.lastRun.failed.showDetails',
+										)
+									"
+									@click="showFailure(task)"
+								>
+									{{ t('plugins.generic.scheduledTaskManager.lastRun.failed') }}
+								</button>
 							</span>
 						</template>
 						<span v-else class="stm__muted">
@@ -582,6 +678,27 @@ onMounted(reload);
 	opacity: 0.6;
 }
 
+/*
+ * A late or failed task tints its whole row, with a bar down its leading edge so the state does
+ * not rest on colour alone; the badge in the row says which in words. The cells carry the colour
+ * because core's row stripes itself on even rows.
+ */
+.stm__row--overdue > :is(td, th) {
+	background: #fdf6e3;
+}
+
+.stm__row--overdue > :first-child {
+	box-shadow: inset 0.25rem 0 0 #a37b16;
+}
+
+.stm__row--failed > :is(td, th) {
+	background: #fbeceb;
+}
+
+.stm__row--failed > :first-child {
+	box-shadow: inset 0.25rem 0 0 #a3161a;
+}
+
 .stm__taskName {
 	display: block;
 	font-weight: 700;
@@ -611,6 +728,21 @@ onMounted(reload);
 	white-space: nowrap;
 }
 
+/* In the Last Run column the relative time follows the date, and may drop below it if it must. */
+.stm__when {
+	display: block;
+}
+
+.stm__when .stm__moment {
+	display: inline;
+}
+
+.stm__relative {
+	font-size: 0.8125rem;
+	opacity: 0.7;
+	white-space: nowrap;
+}
+
 .stm__badge {
 	display: inline-block;
 	margin-top: 0.25rem;
@@ -628,15 +760,38 @@ onMounted(reload);
 	color: #a3161a;
 }
 
-.stm__failed,
 .stm__overdue {
 	display: block;
+	color: #a3161a;
 	font-size: 0.75rem;
 	font-weight: 700;
 }
 
-.stm__overdue {
-	color: #a3161a;
+/* The badge is the way in to the failure's details, so it is a real button in badge dress. */
+.stm__badge--failed {
+	margin-top: 0;
+	border-color: #a3161a;
+	background: #a3161a;
+	color: #fff;
+	cursor: pointer;
+	font-family: inherit;
+	line-height: inherit;
+}
+
+.stm__badge--failed:hover,
+.stm__badge--failed:focus-visible {
+	background: #7d1014;
+	border-color: #7d1014;
+}
+
+.stm__badge--failed:focus-visible {
+	outline: 2px solid #7d1014;
+	outline-offset: 2px;
+}
+
+.stm__failure {
+	display: block;
+	margin-top: 0.25rem;
 }
 
 /*

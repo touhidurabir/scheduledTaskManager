@@ -93,10 +93,103 @@ msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
 msgstr "Zaznamenáno tímto pluginem při spuštění úlohy."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
-msgstr "Převzato z nejnovějšího protokolu úlohy, protože spuštění proběhlo dříve, než byl tento plugin zapnut."
+msgstr "Převzato z nejnovějšího protokolu úlohy, který je novější než cokoli, co tento plugin zaznamenal – například spuštění před zapnutím pluginu nebo spuštění přes scheduler.php test, které se nikam nehlásí. Protokol neříká, jak spuštění dopadlo, ani co ho spustilo."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
 msgstr "Selhalo"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranFor"
+msgstr "Běželo {$duration}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.web"
+msgstr "Běželo {$duration} přes webový spouštěč úloh"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.cli"
+msgstr "Běželo {$duration} přes CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.manual"
+msgstr "Běželo {$duration}, spuštěno ručně"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.web"
+msgstr "Spuštěno webovým spouštěčem úloh"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.cli"
+msgstr "Spuštěno přes CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.manual"
+msgstr "Spuštěno ručně"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed.showDetails"
+msgstr "Selhalo: zobrazit, co se stalo"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web"
+msgstr "webový spouštěč úloh"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web.description"
+msgstr "Spuštěno webovým spouštěčem úloh na konci požadavku na stránku."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli"
+msgstr "CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli.description"
+msgstr "Spuštěno z příkazové řádky: cronem, nebo ručním spuštěním plánovače. Obojí nelze rozlišit."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual"
+msgstr "spuštěno ručně"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual.description"
+msgstr "Spuštěno z této stránky tlačítkem „Spustit“."
+
+msgid "plugins.generic.scheduledTaskManager.failure.title"
+msgstr "Poslední selhání"
+
+msgid "plugins.generic.scheduledTaskManager.failure.none"
+msgstr "K tomuto selhání nebyly uloženy žádné podrobnosti. Bylo zaznamenáno dříve, než tento plugin začal podrobnosti o selháních ukládat, nebo je nebylo možné uložit."
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.when"
+msgstr "Kdy"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.origin"
+msgstr "Zdroj"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.runtime"
+msgstr "Trvání"
+
+msgid "plugins.generic.scheduledTaskManager.failure.exception"
+msgstr "Úloha skončila chybou, kterou sama neošetřila."
+
+msgid "plugins.generic.scheduledTaskManager.failure.where"
+msgstr "v {$file}:{$line}"
+
+msgid "plugins.generic.scheduledTaskManager.failure.cause"
+msgstr "Způsobeno"
+
+msgid "plugins.generic.scheduledTaskManager.failure.trace"
+msgstr "Výpis zásobníku"
+
+msgid "plugins.generic.scheduledTaskManager.failure.traceTruncated"
+msgstr "Výpis zásobníku byl při záznamu zkrácen."
+
+msgid "plugins.generic.scheduledTaskManager.failure.reported"
+msgstr "Úloha ohlásila, že se nedokončila. Problém ošetřila sama, takže výpis zásobníku neexistuje: jejím vlastním popisem je to, co během běhu zapsala do svého protokolu."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noLog"
+msgstr "Protokol z tohoto spuštění nebyl nalezen, takže vlastní popis úlohy není k dispozici."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noEntries"
+msgstr "Úloha během běhu nezapsala do protokolu nic, co by vysvětlovalo důvod."
+
+msgid "plugins.generic.scheduledTaskManager.failure.entries"
+msgstr "Záznamy protokolu z tohoto spuštění"
+
+msgid "plugins.generic.scheduledTaskManager.failure.entriesTruncated"
+msgstr "Uchovány byly jen nejnovější záznamy."
+
+msgid "plugins.generic.scheduledTaskManager.failure.download"
+msgstr "Stáhnout celý protokol ({$file})"
+
+msgid "plugins.generic.scheduledTaskManager.failure.logGone"
+msgstr "Protokol {$file} byl mezitím smazán; vše zobrazené výše bylo zkopírováno v okamžiku selhání."
 
 msgid "plugins.generic.scheduledTaskManager.overdue.badge"
 msgstr "Po termínu"
@@ -306,7 +399,7 @@ msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
 msgstr "Doporučujeme spouštět plánovač z cronu"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
-msgstr "Plánované úlohy nyní spouští webový spouštěč úloh na konci webových požadavků. To se nedoporučuje pro nic jiného než malé weby: práce padne na načtení stránky návštěvníků a bez návštěv se nespustí vůbec nic. Doporučenou alternativou je záznam v crontabu spouštěný každou minutu:"
+msgstr "Plánované úlohy nyní spouští webový spouštěč úloh na konci webových požadavků. Používejte ho, jen pokud nelze nastavit cron: úlohy spouští, jen když někdo web navštíví, takže na každém webu, i malém, může úloha proběhnout pozdě nebo svůj termín zmeškat a práce padne na načtení stránky návštěvníků. Doporučenou alternativou je záznam v crontabu spouštěný každou minutu:"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
 msgstr "Nepoužívejte obojí zároveň. Až záznam do crontabu přidáte, nastavte task_runner = Off v sekci [schedule] souboru config.inc.php – jinak se stejná úloha může ve svém okně spustit dvakrát."

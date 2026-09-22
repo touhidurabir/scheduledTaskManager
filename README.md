@@ -1,119 +1,82 @@
 # Scheduled Task Manager
 
-A site-administration UI for the scheduled task system in OJS, OMP and OPS 3.5 and later.
+A site-administration page for the scheduled tasks of OJS, OMP and OPS 3.5 — for
+site administrators who cannot run `lib/pkp/tools/scheduler.php` on the server.
 
-`php lib/pkp/tools/scheduler.php list` already answers "what is registered and when does it next
-run", but it needs shell access to the server. Most people asking those questions on the PKP forum
-are site administrators without it. This plugin puts the same information — plus last-run times,
-manual execution and the execution logs — behind Administration.
+## Screenshot
 
-## What it shows
+![The Scheduled Tasks page, with one failed task and one overdue task](docs/scheduled-tasks.png)
 
-Administration gains a **Scheduled Tasks** panel leading to
-`index.php/index/en/admin/scheduledTasks`, which lists every registered task with:
+*A failed task (red, with the **Failed** badge that opens its details) and an overdue task (amber).*
 
-| Column | Meaning |
-|---|---|
-| Task | The task's class, as `scheduler.php list` reports it, with the task's own name below |
-| Interval | A readable frequency plus the exact cron expression |
-| Last Run | When the task last actually ran — see below |
-| Due | The next occurrence, resolved in the event's timezone |
-| Actions | Run the task now, or list and download its execution logs |
+## Features
 
-A task that cannot be run right now — switched off by configuration, already running, or
-registered without a name — is faded and carries a short badge saying which, so the rows that
-can act read first.
+- **Every registered task** — core, application and plugin tasks, exactly as
+  `scheduler.php list` sees them — with its interval, cron expression and next due time.
+- **Last run**, how long it took, and what ran it: the web task runner, the CLI (cron, or someone
+  running the scheduler by hand), or a manual run.
+- **Failed** tasks are shaded red. The **Failed** badge opens the details: the exception and its
+  stack trace, or, for a task that reported its own failure, what it wrote to its log during
+  that run.
+- **Overdue** tasks — ones that missed a scheduled run — are shaded amber.
+- **Run a task now**, after a confirmation. A task switched off by its own conditions (such as
+  `ProcessQueueJobs` without `queues.process_jobs_at_task_scheduler`) or already running is refused.
+- **Execution logs** per task: sort by start or duration, filter by date and duration, download,
+  and delete old ones.
+- **Scheduler status** at a glance: whether the web task runner is on, the timezone times are
+  shown in, and the log directory — with a reminder to run the scheduler from cron. Use the web
+  task runner only where cron cannot be set up: it runs tasks only when someone visits, so on any
+  site, however small, a task can run late or miss its due time, and its work lands on a
+  visitor's page load.
 
-### Is anything actually running my tasks?
+## How it works
 
-Three cards above the table answer that before any row is read:
-
-- **Web task runner** — on (and at what interval), off, or *not available* on releases that no
-  longer ship one. Its presence is detected, not assumed.
-- **Registered tasks**, with the timezone the times are shown in and the config key it came from.
-- **Log files**, with the directory they are written to.
-
-While the web task runner is on, a standing notice sits above them recommending the alternative:
-run the scheduler from cron instead. The web runner does its work at the end of web requests, so
-the cost lands on visitors' page loads and nothing runs at all while nobody is visiting — which is
-why it is discouraged beyond small sites.
-
-### Where "Last Run" comes from
-
-Two sources, in order of preference:
-
-1. **Recorded by this plugin.** It listens to the scheduler's own `ScheduledTaskFinished` and
-   `ScheduledTaskFailed` events, which both the web task runner and cron dispatch, and stores the
-   time, duration and outcome. This only covers runs since the plugin was enabled.
-2. **The task's newest log file.** `ScheduledTask` writes
-   `{files_dir}/scheduledTaskLogs/{ClassName}-{processId}-{date}.log` on every execution in every
-   mode, so this covers runs from before the plugin existed. Clearing the logs from
-   Administration also clears this evidence.
-
-A third value, the **task runner checkpoint**, is shown only when it is diagnostic. It is core's
-`taskRunnerLastRunSummary` (pkp/pkp-lib#13041, 3.5 only) and is deliberately *not* presented as a
-last run: on a task's first sighting the web runner seeds it with a schedule boundary for a task
-that has never run. It appears only while that runner is switched on, and only when it stands
-clear of the last real execution — a boundary marked covered for an occurrence that did not
-happen, which is exactly what to look at when a task seems never to run. Where the runner is off,
-or the release no longer has one, the stored checkpoints are leftovers and stay hidden.
-
-### Running a task by hand
-
-Scheduled tasks are not meant to be run manually, so the action asks for confirmation and warns
-that long-running tasks may exceed the server's time limit. The plugin refuses to run a task that:
-
-- is switched off by its own `when()`/`skip()` conditions — `ProcessQueueJobs` carries such a
-  guard on `queues.process_jobs_at_task_scheduler`, and running it anyway would process the queue
-  behind the installation's back;
-- is already running, according to the task's `withoutOverlapping()` mutex;
-- was registered without a name, and so cannot be identified reliably.
-
-A manual run emits the same lifecycle events the scheduler does, so it is recorded like any other
-execution and is visible to any other listener.
+- **Last run** is the more recent of two sources: the plugin's own record, kept by listening to
+  the scheduler's events (so it starts when the plugin is enabled), and the task's newest log
+  file, which reaches back further but cannot say how a run went or what ran it.
+- **Success or failure** is read from the exit code the scheduler leaves on the task, not from
+  which event fired: core's tasks that can fail (`UpdateIPGeoDB`, `UpdateRorRegistryDataset`, the
+  usage statistics loader, `DOAJInfoSender`) report it by returning `false`, which the scheduler
+  still announces as "finished".
+- **Only each task's latest failure is kept**, and its next success clears it. Traces and log
+  excerpts are size-limited and shown to site administrators only.
+- The web runner's own **checkpoint** (3.5.0-6 and later) is shown only when it disagrees with
+  the last real run — the case worth a look when a task seems never to run.
 
 ## Requirements
 
-- OJS, OMP or OPS 3.5.0 or later
+- OJS, OMP or OPS 3.5.0-4 or later — earlier 3.5.0 releases lack the hook plugins use to add
+  their own API, so the page cannot load its data there
 - PHP 8.2 or later
-- A site administrator account
 
 ## Installation
 
-Downlaod the packaged plugin from release section and installed it. Or Installed from plugin gallery if and when available.
-
-Also possible to do git clone and installed the plugin. Clone/Checkout the repo in `INSTALLATION_PATH/plugins/generic/` and run following commands as
+Download the packaged plugin from the releases and upload it from the Plugins page, or install it
+from the plugin gallery once it is listed there. To install from a git checkout instead, clone it
+into `plugins/generic/scheduledTaskManager` and run:
 
 ```bash
-php INSTALLATION_PATH/lib/pkp/tools/installPluginVersion.php plugins/generic/scheduledTaskManager/version.xml
+php lib/pkp/tools/installPluginVersion.php plugins/generic/scheduledTaskManager/version.xml
 ```
 
-Then enable the plugin:
+Then enable it:
 
-- **More than one journal/press/server:** Administration → Site Settings → Plugins.
-- **Exactly one:** core hides that tab on single-context installations, so the plugin presents
-  itself as a context plugin and is enabled from the journal's own Plugins page instead
-  (Settings → Website → Plugins). Note that core's plugin grid requires the *Manager* role to
-  toggle a context-level plugin, so a site administrator who holds no role in the journal will
-  see the row but not the switch.
+- **More than one journal, press or server:** Administration → Site Settings → Plugins.
+- **Exactly one:** that journal's Settings → Website → Plugins, which needs the Manager role —
+  core hides the site-level tab on single-context installations.
 
-Either way the page itself stays at the site level and remains site-administrator only.
+The page is at Administration → Scheduled Tasks, for site administrators only.
 
-## Notes and limitations
+## Notes
 
-- **The task list matches cron, not the current request.** In a web request core only registers
-  the plugins enabled in that request's context, which at site level would hide every task
-  belonging to a journal-level plugin. This page loads plugins from disk exactly as the CLI tools
-  do, so what it lists is what `scheduler.php list` lists.
-- **Log files are grouped by short class name.** Core names them after the class without its
-  namespace, so two task classes sharing a short name across namespaces would share log files.
-  That is inherent to core's naming.
-- **The log directory is unbounded, and reading it is the plugin's only real cost.** An
-  `everyMinute` task writes a file per run — 1,440 a day, tens of thousands in a month, all in one
-  flat directory shared by every task.
-- Log downloads reuse core's existing site-admin-only
-  `admin/downloadScheduledTaskLogFile` operation rather than serving files from the plugin.
+- The log directory is flat and unbounded — an every-minute task writes 1,440 files a day — so
+  reading it is the plugin's main cost. The page reads only what it needs; delete old logs from a
+  task's Logs view.
+- Core names log files after the task's class without its namespace, so two tasks sharing a
+  class name share log files.
 
 ## License
 
-MIT. See `LICENSE`.
+Copyright (c) 2026 Touhidur Rahman
+
+Distributed under the GNU GPL v3. For full terms see the file `LICENSE`.

@@ -93,10 +93,103 @@ msgid "plugins.generic.scheduledTaskManager.lastRun.fromHistory"
 msgstr "Записано от тази приставка при изпълнението на задачата."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.fromLog"
-msgstr "Взето от най-новия дневник на задачата, защото изпълнението е станало, преди приставката да бъде включена."
+msgstr "Взето от най-новия дневник на задачата, който е по-нов от всичко, записано от тази приставка – например изпълнение преди включването ѝ или стартирано със scheduler.php test, което не се отчита никъде. Дневникът не казва как е минало изпълнението, нито какво го е стартирало."
 
 msgid "plugins.generic.scheduledTaskManager.lastRun.failed"
 msgstr "Неуспешно"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranFor"
+msgstr "Изпълнявана {$duration}"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.web"
+msgstr "Изпълнявана {$duration} от уеб изпълнителя на задачи"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.cli"
+msgstr "Изпълнявана {$duration} през CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.ranForVia.manual"
+msgstr "Изпълнявана {$duration}, ръчно стартирана"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.web"
+msgstr "Изпълнена от уеб изпълнителя на задачи"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.cli"
+msgstr "Изпълнена през CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.via.manual"
+msgstr "Изпълнена ръчно"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.failed.showDetails"
+msgstr "Неуспешно: покажи какво се е случило"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web"
+msgstr "уеб изпълнител на задачи"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.web.description"
+msgstr "Изпълнена от уеб изпълнителя на задачи в края на заявка за страница."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli"
+msgstr "CLI"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.cli.description"
+msgstr "Изпълнена от командния ред: от cron или от човек, стартирал планировчика ръчно. Двете не могат да бъдат различени."
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual"
+msgstr "изпълнена ръчно"
+
+msgid "plugins.generic.scheduledTaskManager.lastRun.origin.manual.description"
+msgstr "Стартирана от тази страница с бутона „Изпълни“."
+
+msgid "plugins.generic.scheduledTaskManager.failure.title"
+msgstr "Последен неуспех"
+
+msgid "plugins.generic.scheduledTaskManager.failure.none"
+msgstr "За този неуспех не са запазени подробности. Той е записан, преди приставката да започне да пази подробности за неуспехите, или подробностите не са могли да бъдат запазени."
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.when"
+msgstr "Кога"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.origin"
+msgstr "Източник"
+
+msgid "plugins.generic.scheduledTaskManager.failure.meta.runtime"
+msgstr "Времетраене"
+
+msgid "plugins.generic.scheduledTaskManager.failure.exception"
+msgstr "Задачата спря с грешка, която не е обработила."
+
+msgid "plugins.generic.scheduledTaskManager.failure.where"
+msgstr "в {$file}:{$line}"
+
+msgid "plugins.generic.scheduledTaskManager.failure.cause"
+msgstr "Причинено от"
+
+msgid "plugins.generic.scheduledTaskManager.failure.trace"
+msgstr "Стек на извикванията"
+
+msgid "plugins.generic.scheduledTaskManager.failure.traceTruncated"
+msgstr "Стекът беше съкратен при записването."
+
+msgid "plugins.generic.scheduledTaskManager.failure.reported"
+msgstr "Задачата съобщи, че не е завършила. Тя е обработила проблема сама, затова няма стек на извикванията: нейното собствено обяснение е записаното в дневника ѝ по време на изпълнението."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noLog"
+msgstr "Не е открит дневник от това изпълнение, затова собственото обяснение на задачата не е налично."
+
+msgid "plugins.generic.scheduledTaskManager.failure.noEntries"
+msgstr "По време на изпълнението задачата не е записала в дневника си нищо, което да обяснява причината."
+
+msgid "plugins.generic.scheduledTaskManager.failure.entries"
+msgstr "Записи в дневника от това изпълнение"
+
+msgid "plugins.generic.scheduledTaskManager.failure.entriesTruncated"
+msgstr "Запазени са само най-новите записи."
+
+msgid "plugins.generic.scheduledTaskManager.failure.download"
+msgstr "Изтегляне на целия дневник ({$file})"
+
+msgid "plugins.generic.scheduledTaskManager.failure.logGone"
+msgstr "Дневникът {$file} междувременно е изтрит; показаното по-горе е копирано в момента на неуспеха."
 
 msgid "plugins.generic.scheduledTaskManager.overdue.badge"
 msgstr "Просрочена"
@@ -306,7 +399,7 @@ msgid "plugins.generic.scheduledTaskManager.notice.cron.title"
 msgstr "Препоръчва се планировчикът да се изпълнява чрез cron"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.message"
-msgstr "В момента планираните задачи се изпълняват от уеб изпълнителя на задачи, в края на уеб заявките. Това не се препоръчва за нищо друго освен малки сайтове: работата пада върху зареждането на страници на посетителите, а когато няма посещения, не се изпълнява нищо. Препоръчителната алтернатива е запис в crontab, който се изпълнява всяка минута:"
+msgstr "В момента планираните задачи се изпълняват от уеб изпълнителя на задачи, в края на уеб заявките. Използвайте го само ако не може да се настрои cron: той изпълнява задачи само когато някой посещава сайта, затова на всеки сайт, дори малък, задача може да се изпълни със закъснение или да пропусне срока си, а работата пада върху зареждането на страници на посетителите. Препоръчителната алтернатива е запис в crontab, който се изпълнява всяка минута:"
 
 msgid "plugins.generic.scheduledTaskManager.notice.cron.warning"
 msgstr "Не използвайте и двете. Когато добавите записа в crontab, задайте task_runner = Off в раздела [schedule] на config.inc.php — в противен случай една и съща задача може да бъде стартирана два пъти в собствения си прозорец."

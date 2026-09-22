@@ -4,15 +4,12 @@
  * @file classes/LogQuery.php
  *
  * Copyright (c) 2026 Touhidur Rahman
- * Distributed under The MIT License. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class LogQuery
  *
  * @brief What the log listing was asked for: one page, in an order, within optional date and
  *        duration bounds. Every value arrives from the client, so every value is clamped here.
- *
- * needsEveryFile() is the one that costs money: a duration cannot be known without opening the
- * file, so ordering or filtering by it has to read the whole matching set rather than one page.
  */
 
 namespace APP\plugins\generic\scheduledTaskManager\classes;

@@ -4,7 +4,7 @@
  * @file classes/TaskCollector.php
  *
  * Copyright (c) 2026 Touhidur Rahman
- * Distributed under The MIT License. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class TaskCollector
  *
@@ -232,23 +232,31 @@ class TaskCollector
      */
     private function lastRun(string $identity, ?array $record): ?array
     {
-        $logged = $this->logs->lastRunFor($identity);
+        $logged = $this->logs->newestRunFor($identity);
 
-        if ($record && (!$logged || $record['at'] >= $logged->getTimestamp())) {
+        if ($record && (!$logged || $record['at'] >= $logged['finished'])) {
             return ScheduleDescriber::moment(Carbon::createFromTimestamp($record['at'])) + [
                 'source' => 'history',
                 'status' => $record['status'],
                 'runtime' => $record['runtime'],
-                'message' => $record['message'],
+                // What ran it, when that is known: a record older than origin tracking is not
+                // attributed to anything rather than guessed at.
+                'origin' => in_array($record['origin'], [
+                    ExecutionHistory::ORIGIN_CLI,
+                    ExecutionHistory::ORIGIN_WEB,
+                    ExecutionHistory::ORIGIN_MANUAL,
+                ], true) ? $record['origin'] : null,
             ];
         }
 
         if ($logged) {
-            return ScheduleDescriber::moment($logged) + [
+            // A log file knows when a run started and finished, and nothing about how it went or
+            // what ran it -- the start and stop entries are written the same either way.
+            return ScheduleDescriber::moment(Carbon::createFromTimestamp($logged['finished'])) + [
                 'source' => 'log',
                 'status' => null,
-                'runtime' => null,
-                'message' => null,
+                'runtime' => $logged['duration'],
+                'origin' => null,
             ];
         }
 

@@ -4,7 +4,7 @@
  * @file classes/ScheduledTaskApiController.php
  *
  * Copyright (c) 2026 Touhidur Rahman
- * Distributed under The MIT License. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class ScheduledTaskApiController
  *
@@ -81,6 +81,9 @@ class ScheduledTaskApiController extends PKPBaseController
 
         Route::delete('logs', $this->deleteLogs(...))
             ->name('plugins.scheduledTaskManager.logs.delete');
+
+        Route::get('failure', $this->failure(...))
+            ->name('plugins.scheduledTaskManager.failure');
     }
 
     /**
@@ -210,6 +213,52 @@ class ScheduledTaskApiController extends PKPBaseController
             'deleted' => $result['deleted'],
             'failed' => $result['failed'],
             'remaining' => $logs->countFor($taskName),
+        ], Response::HTTP_OK);
+    }
+
+    /**
+     * What is known about why a task's latest run failed: its exception with the trace, or the
+     * entries the task wrote before giving up. Kept out of the listing because a trace runs to
+     * kilobytes and is wanted for one row at a time.
+     */
+    public function failure(Request $illuminateRequest): JsonResponse
+    {
+        $taskName = (string) $illuminateRequest->query('task', '');
+
+        if ($taskName === '') {
+            return response()->json([
+                'error' => __('plugins.generic.scheduledTaskManager.run.missingTask'),
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
+        $failure = ExecutionHistory::failure($this->plugin, $taskName);
+
+        if ($failure === null) {
+            return response()->json(['failure' => null], Response::HTTP_OK);
+        }
+
+        $log = $failure['log'] ?? null;
+
+        if (is_array($log) && isset($log['file'])) {
+            $logs = new LogRepository();
+
+            // The entries were copied when the run failed; the file itself may have been
+            // cleaned up since, and a link to it would then lead nowhere.
+            $log['downloadUrl'] = is_file($logs->directory() . '/' . basename($log['file']))
+                ? $this->downloadUrl($log['file'])
+                : null;
+        }
+
+        return response()->json([
+            'failure' => [
+                'at' => ScheduleDescriber::moment(Carbon::createFromTimestamp((int) $failure['at'])),
+                'kind' => $failure['kind'],
+                'origin' => $failure['origin'] ?? null,
+                'runtime' => $failure['runtime'] ?? null,
+                'message' => $failure['message'] ?? null,
+                'exception' => $failure['exception'] ?? null,
+                'log' => $log,
+            ],
         ], Response::HTTP_OK);
     }
 

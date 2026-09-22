@@ -4,7 +4,7 @@
  * @file classes/TaskRunner.php
  *
  * Copyright (c) 2026 Touhidur Rahman
- * Distributed under The MIT License. For full terms see the file LICENSE.
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class TaskRunner
  *
@@ -20,7 +20,6 @@ namespace APP\plugins\generic\scheduledTaskManager\classes;
 use Illuminate\Console\Events\ScheduledTaskFailed;
 use Illuminate\Console\Events\ScheduledTaskFinished;
 use Illuminate\Console\Events\ScheduledTaskStarting;
-use Illuminate\Console\Scheduling\CallbackEvent;
 use Illuminate\Console\Scheduling\Event as ScheduledEvent;
 use Illuminate\Contracts\Events\Dispatcher;
 use PKP\core\PKPContainer;
@@ -85,12 +84,7 @@ class TaskRunner
         $dispatcher->dispatch(new ScheduledTaskStarting($event));
 
         try {
-            // Only CallbackEvent hands back what the task returned; Event::run() is declared void,
-            // so for any other kind of event -- a plugin scheduling a console command, say -- the
-            // most that can honestly be said is that it finished without throwing.
-            $result = $event instanceof CallbackEvent
-                ? $event->run($container)
-                : $this->runWithoutResult($event, $container);
+            $event->run($container);
         } catch (Throwable $exception) {
             $dispatcher->dispatch(new ScheduledTaskFailed($event, $exception));
 
@@ -105,10 +99,18 @@ class TaskRunner
 
         $dispatcher->dispatch(new ScheduledTaskFinished($event, round(microtime(true) - $startedAt, 2)));
 
-        // The scheduled callback is `fn () => $task->execute()`, and CallbackEvent keeps that
-        // return value, so a task that reports its own failure is distinguishable from one that
-        // threw and from one that succeeded. null means the event kind cannot report either way.
-        $succeeded = $result !== false;
+        // Read the way the recorder reads it: from the exit code Event::run() left behind -- 0 for
+        // success, 1 for a task that returned false, and null when the overlap lock was taken
+        // between the check in run() and this call, so nothing ran. That holds for any kind of
+        // event, where a return value only exists for a closure.
+        if (!$event->runInBackground && $event->exitCode === null) {
+            return $this->refuse(
+                __('plugins.generic.scheduledTaskManager.blocked.running'),
+                TaskCollector::BLOCKED_RUNNING
+            );
+        }
+
+        $succeeded = $event->runInBackground || $event->exitCode === 0;
 
         return [
             'ok' => $succeeded,
@@ -117,16 +119,6 @@ class TaskRunner
                 ? __('plugins.generic.scheduledTaskManager.run.completed')
                 : __('plugins.generic.scheduledTaskManager.run.failed'),
         ] + $this->outcome($identity, $before);
-    }
-
-    /**
-     * Run an event that reports nothing back, and say so.
-     */
-    private function runWithoutResult(ScheduledEvent $event, PKPContainer $container): ?bool
-    {
-        $event->run($container);
-
-        return null;
     }
 
     /**
@@ -151,7 +143,7 @@ class TaskRunner
         // A fresh repository: the one held by the collector cached its directory scan before the
         // task wrote anything.
         $logs = new LogRepository();
-        $newest = $logs->filesFor($identity, 1)['files'][0] ?? null;
+        $newest = $logs->filesFor($identity, new LogQuery(limit: 1))['files'][0] ?? null;
 
         return [
             'lastRun' => ScheduleDescriber::moment($logs->lastRunFor($identity)),
@@ -164,7 +156,7 @@ class TaskRunner
      */
     private function newestLogTimestamp(string $identity): ?int
     {
-        $newest = (new LogRepository())->filesFor($identity, 1)['files'][0] ?? null;
+        $newest = (new LogRepository())->filesFor($identity, new LogQuery(limit: 1))['files'][0] ?? null;
 
         return $newest['modified'] ?? null;
     }
