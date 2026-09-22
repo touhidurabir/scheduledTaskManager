@@ -8,9 +8,7 @@
  *
  * @class ScheduledTaskManagerPlugin
  *
- * @brief Site administration UI for the Laravel-backed scheduled task system: lists every
- *        registered task with its schedule, last run and next due time, allows a site
- *        administrator to trigger one manually, and exposes the execution log files.
+ * @brief Site administration UI for the Laravel-backed scheduled task system
  */
 
 namespace APP\plugins\generic\scheduledTaskManager;

@@ -151,7 +151,7 @@ class TaskRunner
         // A fresh repository: the one held by the collector cached its directory scan before the
         // task wrote anything.
         $logs = new LogRepository();
-        $newest = $logs->filesFor($identity, 1)['files'][0] ?? null;
+        $newest = $logs->filesFor($identity, new LogQuery(limit: 1))['files'][0] ?? null;
 
         return [
             'lastRun' => ScheduleDescriber::moment($logs->lastRunFor($identity)),
@@ -164,7 +164,7 @@ class TaskRunner
      */
     private function newestLogTimestamp(string $identity): ?int
     {
-        $newest = (new LogRepository())->filesFor($identity, 1)['files'][0] ?? null;
+        $newest = (new LogRepository())->filesFor($identity, new LogQuery(limit: 1))['files'][0] ?? null;
 
         return $newest['modified'] ?? null;
     }
